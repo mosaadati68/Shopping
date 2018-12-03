@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>@yield('title', 'صفحه اصلی') | فروشگاه اینترینتی شیک پوشان </title>
+
+@section('Styles')
+    <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+              integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap-notifications.min.css') }}">
+
+        <!-- Bootstrap core CSS -->
+        <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/toastr.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/fontiran.css') }}" rel="stylesheet">
+
+        <!-- Material Design Bootstrap -->
+        <link href="{{ asset('/css/mdb.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/animate.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    @show
+</head>
+
+<body class="homepage-v1 hidden-sn white-skin animated">
+<!--Navigation-->
+<header>
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg  navbar-light scrolling-navbar white">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link dark-grey-text font-weight-bold waves-effect waves-light"
+                           href="{{route('cart')}}">
+                            <span id="cartCount" class="badge danger-color">{{Cart::content()->count()}}</span>
+                            <i class="fa fa-shopping-cart blue-text" aria-hidden="true"></i>
+                            <span class="clearfix d-none d-sm-inline-block">سبد خرید</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect waves-light dark-grey-text font-weight-bold"
+                           href="{{route('contact')}}">
+                            <i class="fa fa-envelope blue-text"></i> تماس با ما
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item ml-3">
+                        <a class="nav-link waves-effect waves-light dark-grey-text font-weight-bold" href="#">
+                            <i class="fa fa-gear blue-text"></i> تنظیمات</a>
+                    </li>
+                    {{--                    @if (Auth::check())--}}
+                    <li class="nav-item dropdown ml-3">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light dark-grey-text font-weight-bold"
+                           id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user blue-text"></i> حساب کاربری </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-cyan"
+                             aria-labelledby="navbarDropdownMenuLink-4">
+                            <a class="dropdown-item waves-effect waves-light text-md-right" href="#">پروفایل</a>
+                            <a class="dropdown-item waves-effect waves-light text-md-right"
+                               href="{{route('logout')}}">خروج</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-light dark-grey-text font-weight-bold"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i data-count="0" class="fa fa-belll"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- /.Navbar -->
+</header>
+<!-- /.Navigation -->
+
+@yield('intro')
+<div class="container-fluid">
+    @yield('content')
+</div>
+<!--Footer-->
+<footer class="page-footer text-center text-md-left stylish-color-dark pt-0 mt-3">
+
+    <!--Footer Links-->
+    <div class="container-fluid text-center text-md-right">
+        <div class="row">
+            <div class="col-md-4 col-lg-5 col-xl-4 mb-4 mt-4">
+                <div class="visible-print text-right mr-4">
+                    {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(100)->color(0,0,0)->backgroundColor(61,68,81)->generate(Request::url());  !!}
+                </div>
+                <p style="margin-top: 20px">برای بازگشت به صفحه اصلی بارکد زیر را اسکن نمایید.</p>
+            </div>
+            <div class="col-md-4 col-lg-5 col-xl-4 mb-4">
+                <div class="mt-4">
+                    <a href="https://cafebazaar.ir/app/com.digikala/?l=fa" rel="nofollow" target="_blank"
+                       data-event="footer_links" data-snt-event="dkFooterClick"
+                       data-snt-params="{&quot;item&quot;:&quot;download-app&quot;,&quot;item_option&quot;:&quot;android&quot;}"
+                       data-event-category="footer_section"
+                       data-event-label="link: https://cafebazaar.ir/app/com.digikala/?l=fa - current_page: /">
+                        <img alt=""
+                             width="159"
+                             src="https://www.digikala.com/static/files/b72a0683.png">
+                    </a>
+                    <a href="https://new.sibapp.com/applications/digikala" rel="nofollow" target="_blank"
+                       class="c-footer__address-appstore" data-snt-event="dkFooterClick"
+                       data-snt-params="{&quot;item&quot;:&quot;download-app&quot;,&quot;item_option&quot;:&quot;ios&quot;}"
+                       data-event-category="footer_section"
+                       data-event-label="link: https://new.sibapp.com/applications/digikala - current_page: /">
+                        <img alt=""
+                             width="159"
+                             src="https://www.digikala.com/static/files/c4abfc14.png">
+                    </a>
+                    <div class="mt-2">
+                        <img class="ml-3" src="/img/namad_kabokar.png" width="150" height="150"
+                             style="cursor:pointer"></li>
+                        <img src="/img/namad.png" width="150" height="150"
+                             style="cursor:pointer; border-radius: 5px"></li>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-5 col-xl-4 mb-4">
+                <div class="col mr-5">
+                    <div class="col-12">
+                        <p class="text-right mt-4">از تخفیف‌ها و جدیدترین‌های شیک پوشان باخبر شوید:</p>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <input type="email" style="border-radius: 0px 3px 3px 0px;font-family: IRANSansWeb"
+                                   id="SubscriptionFormEmail" class="form-control mb-4"
+                                   placeholder="آدرس ایمیل خود را وارد نمایید...">
+                            <button onclick="SubscriptionFormEmail()"
+                                    style="height: calc(2.25rem + 2px);
+                                    font-family: IRANSansWeb;
+                                    width: 100px;font-size: 15px"
+                                    class="btn btn-info btn-sm" type="submit">ارسال
+                            </button>
+                        </div>
+                        <div class="col-12 text-right">
+                            <p class="text-right">شیک پوشان را در شبکه‌های اجتماعی دنبال کنید:</p>
+                            <a class="btn_instagram text-center" href="https://www.instagram.com/digikalacom/">
+                                <img width="25"
+                                     src="https://www.digikala.com/static/files/0ae6d682.svg">
+                                اینستاگرام شیک پوشان
+                            </a>
+                            <a class="text-right" href="https://www.instagram.com/digikalacom/">
+                                <button class="btn blue-gradient font-weight-bold"
+                                        style="border-radius: 10px;font-family: IRANSansWeb;font-size: 15px"><i
+                                            class="fa fa-facebook ml-1"></i> فیس بوک
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="mr-1 ml-1" style="height: 1px;background-color: #505b6e">
+        <div class="row mt-3 text-right mr-4">
+            <!--First column-->
+            <div class="col-md-4 col-lg-5 col-xl-4 mb-4">
+                <h6 class="text-uppercase font-weight-bold">
+                    <strong>درباره شرکت</strong>
+                </h6>
+                <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p class="justify-content-start">{{ str_limit('دیجی‌کالا به عنوان یکی از قدیمی‌ترین فروشگاه های اینترنتی با بیش از یک دهه تجربه، با پایبندی به سه اصل کلیدی، پرداخت در محل، 7 روز ضمانت بازگشت کالا و تضمین اصل‌بودن کالا، موفق شده تا همگام با فروشگاه‌های معتبر جهان، به بزرگ‌ترین فروشگاه اینترنتی ایران تبدیل شود. به محض ورود به دیجی‌کالا با یک سایت پر از کالا رو به رو می‌شوید! هر آنچه که نیاز دارید و به ذهن شما خطور می‌کند در اینجا پیدا خواهید کرد. مشاهده بیشتر' , 300 , '...')}}
+                    <a style="color: #0d5bdd" href="{{route('contact')}}">جزئیات بیشتر</a></p>
+            </div>
+            <!--/.First column-->
+
+            <!--Second column-->
+            <div class="col-md-2 col-lg-2 col-xl-2 mr-5 mb-4">
+                <h6 class="text-uppercase font-weight-bold">
+                    <strong>محصولات</strong>
+                </h6>
+                <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <a href="#!">پاسخ به پرسش‌های متداول</a>
+                </p>
+                <p>
+                    <a href="#!">رویه‌های بازگرداندن کالا</a>
+                </p>
+                <p>
+                    <a href="#!">شرایط استفاده</a>
+                </p>
+                <p>
+                    <a href="#!">حریم خصوصی</a>
+                </p>
+            </div>
+            <!--/.Second column-->
+
+            <!--Third column-->
+            <div class="col-md-3 col-lg-2 col-xl-2 mb-4">
+                <h6 class="text-uppercase font-weight-bold">
+                    <strong>راهنمای خرید از دیجی‌کالا</strong>
+                </h6>
+                <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <a href="#!">نحوه ثبت سفارش</a>
+                </p>
+                <p>
+                    <a href="#!">رویه ارسال سفارش</a>
+                </p>
+                <p>
+                    <a href="#!">شیوه‌های پرداخت</a>
+                </p>
+            </div>
+            <!--/.Third column-->
+
+            <!--Fourth column-->
+            <div class="col-md-4 col-lg-3 col-xl-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <strong>تماس با ما</strong>
+                </h6>
+                <hr class="blue mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                    <i class="fa fa-home mr-3"></i> مشهد - بلوار فردوسی - خیابان فرامرز عباسی - پلاک 188</p>
+                <p>
+                    <i class="fa fa-envelope mr-3"></i> info@example.com</p>
+                <p>
+                    <i class="fa fa-phone mr-3"></i> + 01 234 567 88</p>
+                <p>
+                    <i class="fa fa-print mr-3"></i> + 01 234 567 89</p>
+            </div>
+            <!--/.Fourth column-->
+
+        </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <!-- Copyright-->
+    <div class="footer-copyright py-3 text-center">
+        <div class="container-fluid">
+            استفاده از مطالب فروشگاه اینترنتی شیک پوشان فقط برای مقاصد غیرتجاری و با ذکر منبع بلامانع است. کلیه حقوق این
+            سایت متعلق به شرکت سبز رایانه (فروشگاه آنلاین شیک پوشان) می‌باشد.
+        </div>
+    </div>
+    <!--/.Copyright -->
+
+</footer>
+<!--/.Footer-->
+<!-- SCRIPTS -->
+@section('footerScripts')
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap3-typeahead.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>--}}
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/js/popper.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/toastr.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/js/mdb.min.js"></script>
+
+    <script type="text/javascript" src="/js/wow.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script type="text/javascript">
+        /* WOW.js init */
+        new WOW().init();
+
+        // Tooltips Initialization
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        // Material Select Initialization
+        $(document).ready(function () {
+            $('.mdb-select').material_select();
+        });
+    </script>
+    <script>
+        // SideNav Initialization
+        $(".button-collapse").sideNav();
+
+        function addWishlist(productId) {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                /* the route pointing to the post function */
+                url: '/addWishlist',
+                type: 'POST',
+                /* send the csrf-token and the input to the controller */
+                data: {_token: CSRF_TOKEN, id: productId},
+                dataType: 'JSON',
+                /* remind that 'data' is the response of the AjaxController */
+                success: function (data) {
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "rtl": true,
+                        "newestOnTop": false,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "3000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    if (data.status) {
+                        toastr.error(data.message)
+                    } else {
+                        toastr.success(data.message)
+                        setTimeout(function () {
+                            location.reload();
+                        }, 3000);
+                    }
+                }
+            });
+        }
+
+        function ratingPost(rate, productId) {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                /* the route pointing to the post function */
+                url: '/ratingProduct',
+                type: 'POST',
+                /* send the csrf-token and the input to the controller */
+                data: {_token: CSRF_TOKEN, rate: rate, productId: productId},
+                dataType: 'JSON',
+                /* remind that 'data' is the response of the AjaxController */
+                success: function (data) {
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "rtl": true,
+                        "newestOnTop": false,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "3000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    toastr.success(data.message)
+                    setTimeout(function () {
+                        location.reload();
+                    }, 3000);
+                }
+            });
+        }
+
+        function addCart(productId) {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                /* the route pointing to the post function */
+                url: '/cart/add',
+                type: 'POST',
+                /* send the csrf-token and the input to the controller */
+                data: {_token: CSRF_TOKEN, id: productId},
+                dataType: 'JSON',
+                /* remind that 'data' is the response of the AjaxController */
+                success: function (data) {
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "rtl": true,
+                        "newestOnTop": false,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "3000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    toastr.success(data.message)
+                    document.getElementById("cartCount").innerHTML = data.cart.count;
+
+                }
+            });
+        }
+
+    </script>
+    <script type="text/javascript">
+        var path = "{{ route('autocomplete') }}";
+        $('input.typeahead').typeahead({
+            source: function (query, process) {
+                return $.get(path, {query: query}, function (data) {
+                    return process(data);
+                });
+            }
+        });
+
+        function SubscriptionFormEmail() {
+            var SubscriptionFormEmail = $('#SubscriptionFormEmail').val();
+            axios.post('/newsletter', {email: SubscriptionFormEmail})
+                .then(function (response) {
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "rtl": true,
+                        "newestOnTop": false,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "3000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    toastr.success(response.data)
+                });
+        }
+    </script>
+@show
+</body>
+</html>
