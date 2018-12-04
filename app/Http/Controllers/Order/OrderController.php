@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Order;
 
+use App\Address;
 use App\Payment;
 use App\Profile;
 use App\User;
@@ -55,6 +56,14 @@ class OrderController extends Controller
         return $order;
     }
 
+    public function shipping()
+    {
+        $user = Auth::user();
+        $address = $user->addresses()->get();
+        dd($address);
+        return view('shipping');
+    }
+
     public function delete()
     {
         $orders = Order::where('dead_line', '<', Carbon::now())->get();
@@ -89,7 +98,7 @@ class OrderController extends Controller
         $zarinpal = new Zarinpal($this->MerchantID);
 
         $order = Order::where('id', $order_id)->first();
-        $payment = Payment::where('id',$order->payment_id)->first();
+        $payment = Payment::where('id', $order->payment_id)->first();
         $amount = $payment->amount;
         $description = 'توضیحات تراکنش تستی'; // Required
         $email = auth()->user()->email; // Optional
@@ -114,16 +123,16 @@ class OrderController extends Controller
     {
         $zarinpal = new Zarinpal($this->MerchantID);
         $Authority = request('Authority');
-        $payment = Payment::where('transaction_no',$Authority)->firstOrFail();
+        $payment = Payment::where('transaction_no', $Authority)->firstOrFail();
         $authority = $payment->transaction_no;
         $result = $zarinpal->verify('OK', $payment->amount, $authority);
 //        return var_dump($result);
         if ($result["Status"] == 'success') {
             $payment->RefID = $result["RefID"];
             $payment->save();
-            return redirect('thank-you')->with(['success'=>'سفارش با موفقیت پرداخت گردید.']);
-        }else{
-            return redirect('thank-you')->with(['error'=>'پرداخت شما با خطا مواجهه شد.']);
+            return redirect('thank-you')->with(['success' => 'سفارش با موفقیت پرداخت گردید.']);
+        } else {
+            return redirect('thank-you')->with(['error' => 'پرداخت شما با خطا مواجهه شد.']);
         }
     }
 }

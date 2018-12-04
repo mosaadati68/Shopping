@@ -37,7 +37,6 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:web'], function () {
     $this->get('/payment/checker', 'Order\OrderController@checker')->name('checker');
 
     $this->get('/orders/delete', 'Order\OrderController@delete')->name('delete.order');
-    $this->post('/shipping', 'Order\OrderController@shipping');
     $this::get('/profile/edit', 'ProfileController@editProfile')->name('edit.profile');
     $this::post('/profile/save', 'ProfileController@saveProfile')->name('save.profile');
     $this::post('/uploadAvatar', 'ProfileController@uploadAvatar')->name('uploadAvatar');
@@ -61,6 +60,9 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:web'], function () {
     $this::post('/ProductImagesUpload', 'Panel\ProductController@ProductImagesUpload')->name('ProductImagesUpload');
     $this::get('/getCategoryName/{category_name}', 'Panel\ProductController@getCategoryName')->name('getCategoryName');
 
+});
+Route::group(['middleware' => 'auth:web'], function () {
+    $this->get('/shipping', 'Order\OrderController@shipping')->name('shipping.order');
 });
 
 $this::get('/panel', 'Panel\DashboardController@index')->name('dashboard');
