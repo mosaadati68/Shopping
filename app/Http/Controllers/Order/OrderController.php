@@ -24,26 +24,29 @@ class OrderController extends Controller
     {
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
-        $order = $this->addOrder();
-        $payment = $this->newPayment($order->id);
-        Cart::destroy();
+
+//        $print_invoice = $request->get("print-invoice");
+//        $transmission_type = $request->get("transmission-type");
+//        $shipping_time = $request->get("shipping-time");
+//        $order = $this->addOrder($print_invoice,$transmission_type,$shipping_time);
+//        $payment = $this->newPayment($order->id);
+//        Cart::destroy();
 //        \Mail::to($request->user())
 //            ->queue(new OrderPlaced($order));
-        return redirect()->route('orders');
+        return redirect()->route('payment');
     }
 
-    /**
-     * @param Request $request
-     * @return Order
-     */
-    private function addOrder()
+    private function addOrder($print_invoice,$transmission_type,$shipping_time)
     {
         $cartItem = [];
         $order = new Order();
         $order->user_id = auth()->user()->id;
         $order->amount = str_replace(',', '', \Cart::total());
+        $order->print_invoice = $print_invoice;
+        $order->transmission_type = $transmission_type;
+        $order->shipping_time = $shipping_time;
         $order->order_number = 'SHP-' . strtoupper(Str::random(11));
         $order->dead_line = Carbon::now()->addHours(6);
         $carts = Cart::content();
@@ -61,7 +64,7 @@ class OrderController extends Controller
         $user = Auth::user();
         $addresses = $user->addresses()->get();
 //        dd($carts);
-        return view('shipping',compact('addresses'));
+        return view('shipping', compact('addresses'));
     }
 
     public function delete()
@@ -91,6 +94,11 @@ class OrderController extends Controller
         $order = Order::findOrFail($order_id);
         $order->payment_id = $payment->id;
         $order->save();
+    }
+
+    public function show_payment()
+    {
+        return view('payment');
     }
 
     public function payment($order_id)

@@ -32,8 +32,8 @@ Route::post('/address', 'Panel\DashboardController@saveAddress')->name('save.add
 Route::post('/newsletter', 'NewsletterController@store');
 
 Route::group(['prefix' => 'panel','middleware' => 'auth:web'], function () {
-    $this->get('/checkout', 'Order\OrderController@checkout')->name('checkout');
-    $this->get('/payment/order/{order_id}', 'Order\OrderController@payment')->name('payment.order');
+    $this->post('/checkout', 'Order\OrderController@checkout')->name('checkout');
+//    $this->get('/payment/order/{order_id}', 'Order\OrderController@payment')->name('payment.order');
     $this->get('/payment/checker', 'Order\OrderController@checker')->name('checker');
 
     $this->get('/orders/delete', 'Order\OrderController@delete')->name('delete.order');
@@ -61,8 +61,12 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:web'], function () {
     $this::get('/getCategoryName/{category_name}', 'Panel\ProductController@getCategoryName')->name('getCategoryName');
 
 });
+
 Route::group(['middleware' => 'auth:web'], function () {
     $this->get('/shipping', 'Order\OrderController@shipping')->name('shipping.order');
+    $this->post('/checkout', 'Order\OrderController@checkout')->name('checkout.order');
+    $this->get('/payment', 'Order\OrderController@show_payment')->name('payment');
+
 });
 
 $this::get('/panel', 'Panel\DashboardController@index')->name('dashboard');

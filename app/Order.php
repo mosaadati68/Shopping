@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $fillable = [
-        'dead_line'
+        'dead_line','print_invoice','transmission_type','shipping_time'
     ];
     protected $casts = [
         'done' => 'boolean',

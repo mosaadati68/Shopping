@@ -2,9 +2,7 @@
 @section('title', 'صفحه اصلی')
 @section('Styles')
     @parent
-    {{--<link href="css/panel/plugins/table-footable/footable.bootstrap.min.css" rel="stylesheet">--}}
-    {{--<link href="../assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet"/>--}}
-    <link href="css/panel/plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <link href="/css/panel/plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <style>
         td.details-control {
             background: url('/img/panel/datatable/details_open.png') no-repeat center center;
@@ -185,11 +183,13 @@
 @endsection
 @section('Scripts')
     @parent
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <script>
         $(document).on("click", ".data_order", function () {
             var order_number = $(this).data('id');
             $("#order_table tbody tr").remove();
-            axios.get('/getOrder/' + order_number)
+            axios.get('/panel/getOrder/' + order_number)
                 .then(function (response) {
                     console.log(response.data);
                     var cartItem = JSON.parse(response.data[0].cart);
@@ -216,7 +216,7 @@
 
             var dead_line = document.getElementById("dead_line").innerHTML;
             if (parseInt(dead_line) < 0) {
-                axios.get('/orders/delete')
+                axios.get('/panel/orders/delete')
                     .then(function (response) {
                         console.log(response.message);
                     });

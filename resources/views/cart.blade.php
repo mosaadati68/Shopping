@@ -535,7 +535,7 @@
                                             تومان </h5>
                                     </div>
                                     <div class="row-6">
-                                        <h6 class="text-muted text-center pr-1 mt-3"><a href="{{route('checkout')}}"
+                                        <h6 class="text-muted text-center pr-1 mt-3"><a href="{{route('shipping.order')}}"
                                                                                         type="button"
                                                                                         class="btn btn-primary btn-rounded waves-effect waves-light font-weight-bold"
                                                                                         style="font-family: IRANSansWeb">ادامه
