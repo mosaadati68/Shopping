@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'تماس با ما')
 @inject('Cart','Gloudemans\Shoppingcart\Facades\Cart')
+@inject('Auth','Illuminate\Support\Facades\Auth')
 @section('Styles')
     @parent
 @endsection
@@ -405,25 +406,215 @@
 @endsection
 @section('content')
     {{ Breadcrumbs::render('cart', 'سبد خرید') }}
+
+    <div class="card card-ecommerce mb-5">
+        <div class="card-body">
+            <ul class="c-checkout-steps mb-5 mt-5">
+                <li class="is-active is-completed">
+                    <div class="c-checkout-steps__item c-checkout-steps__item--summary" data-title="اطلاعات ارسال"></div>
+                </li>
+                <li class="step">
+                    <div class="c-checkout-steps__item c-checkout-steps__item--delivery" data-title="پرداخت"></div>
+                </li>
+                <li class="step">
+                    <div class="c-checkout-steps__item c-checkout-steps__item--payment" data-title="اتمام خرید و ارسال"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
     <div class="row" id="cart_content">
         <div class="col-8">
             <!-- Section cart -->
             <section class="section pb-5">
+
                 <h3 class="text-muted text-right mb-3 pr-4">انتخاب آدرس تحویل سفارش</h3>
                 <div class="card card-ecommerce">
                     <div class="card-body">
-                        <div class="pr-4" style="border-right-width: 7px;border-right-color: rgb(141, 212, 220);border-right-style: solid;">
-                            <h3 class="text-muted text-right">انتخاب آدرس تحویل سفارش</h3>
+                        @foreach($addresses as $address)
+                            <div class="pr-4"
+                                 style="border-right-width: 7px;border-right-color: rgb(141, 212, 220);border-right-style: solid;">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h4 class="text-muted text-right mb-4">
+                                            گیرنده: {{$address->full_name_transferee}} </h4>
+                                    </div>
+                                    <div class="col-8">
+                                        <a class="text-right float-right" href="#"
+                                           style="border-bottom: dashed;border-bottom-width: 2px;color: #00bfd6">اطلاح
+                                            این آدرس </a>
+                                        <a href="http://localhost:8000/panel/checkout" type="button"
+                                           class="float-left btn waves-effect waves-light font-weight-bold checkout-btn">
+                                            تغییر آدرس ارسال
+                                            <i class="fa fa-angle-left left"></i>
+                                        </a>
+                                    </div>
+                                </div>
 
-                            <h3 class="text-muted text-right">انتخاب آدرس تحویل سفارش</h3>
-
-                            <h3 class="text-muted text-right">انتخاب آدرس تحویل سفارش</h3>
-                        </div>
-
-
-
+                                <h5 class="text-muted text-right mb-4">شماره تماس: {{$address->contact_no}} | کد
+                                    پستی: {{$address->zip_code}}</h5>
+                                <h5 class="text-muted text-right mb-4">
+                                    @php
+                                        echo ' آدرس : استان' . ' ' . $address->state_province . ' , ' . 'شهر ' . $address->city . ' , ' . $address->address
+                                    @endphp
+                                </h5>
+                                <h4 class="text-muted text-right mb-4">آدرس الکترونیکی : {{Auth::user()->email}}</h4>
+                            </div>
+                        @endforeach
                     </div>
                     <div class="c-checkout-contact__badge"></div>
+                </div>
+
+                <h3 class="text-muted text-right mb-3 mt-4 pr-4">انتخاب نحوه ارسال</h3>
+                <div class="card card-ecommerce text-right">
+                    <div class="card-body">
+                        <div class="custom-control custom-checkbox mr-5  mb-3">
+                            <input type="checkbox" class="custom-control-input" id="defaultUncheckedDisabled2"
+                                   width="30">
+                            <label class="custom-control-label" for="defaultUncheckedDisabled2"><h5 class="text-muted">سریع‌ (مرسوله‌ها در سریع‌ترین زمان ممکن ارسال می‌شوند)</h5></label>
+                        </div>
+                        <div class="custom-control custom-checkbox mr-5">
+                            <input type="checkbox" class="custom-control-input" id="defaultUncheckedDisabled2"
+                                   width="30">
+                            <label class="custom-control-label" for="defaultUncheckedDisabled2"><h5 class="text-muted">عادی</h5></label>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-muted text-right mt-4 pr-4"> مرسوله {{Cart::count()}}</h3>
+                <div class="card card-ecommerce mt-4">
+                    <div class="card-body">
+                        @foreach(Cart::content() as $cart)
+                            <div class="pr-4"
+                                 style="border-right-width: 7px;border-right-color: rgb(141, 212, 220);border-right-style: solid;">
+                                <div class="col">
+                                    <div class="row">
+                                        <img class="float-right mb-4" width="150" height="150"
+                                             src="{{$cart->options->image}}" style="border-radius: 5px">
+                                    </div>
+                                    <div class="row">
+                                        <h5 class="text-muted text-right mb-4"> {{$cart->name}} </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                        <hr class="text-muted" width="100%">
+                        <h6 class="text-muted text-right mb-4 mt-4 pr-4">لطفا زمان ارسال را انتخاب بفرمایید:</h6>
+                        <h6 class="text-muted text-right mb-4 pr-4">تحویل اکسپرس دیجی‌کالا | هزینه ارسال: رایگان</h6>
+
+                        <!-- Classic tabs -->
+                        <div class="classic-tabs mx-2">
+
+                            <ul class="nav nav-tabs p-0" id="myClassicTabShadow" role="tablist">
+                                <li class="nav-item" style="width: 20%; margin: 0px">
+                                    <a class="nav-link  waves-light active show text-muted"
+                                       id="profile-tab-classic-shadow"
+                                       data-toggle="tab" href="#profile-classic-shadow"
+                                       role="tab" aria-controls="profile-classic-shadow"
+                                       aria-selected="true">
+
+                                        <h6>{{verta(now())->formatWord('l')}}</h6>
+                                        <br>
+                                        <h6>{{verta(now())->day . ' ' . verta(now())->formatWord('F')}}</h6>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item" style="width: 20%; margin: 0px">
+                                    <a class="nav-link waves-light text-muted" id="follow-tab-classic-shadow"
+                                       data-toggle="tab" href="#follow-classic-shadow" role="tab"
+                                       aria-controls="follow-classic-shadow" aria-selected="false">
+
+                                        <h6>{{verta(now()->addDay(1))->formatWord('l')}}</h6>
+                                        <br>
+                                        <h6>{{verta(now()->addDay(1))->day . ' ' . verta(now()->addDay(1))->formatWord('F')}}</h6>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item" style="width: 20%; margin: 0px">
+                                    <a class="nav-link waves-light text-muted" id="contact-tab-classic-shadow"
+                                       data-toggle="tab" href="#contact-classic-shadow" role="tab"
+                                       aria-controls="contact-classic-shadow" aria-selected="false">
+                                        <h6>{{verta(now()->addDay(2))->formatWord('l')}}</h6>
+                                        <br>
+                                        <h6>{{verta(now()->addDay(2))->day . ' ' . verta(now()->addDay(2))->formatWord('F')}}</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item" style="width: 20%; margin: 0px">
+                                    <a class="nav-link waves-light text-muted" id="awesome-tab-classic-shadow"
+                                       data-toggle="tab" href="#awesome-classic-shadow" role="tab"
+                                       aria-controls="awesome-classic-shadow" aria-selected="false">
+                                        <h6>{{verta(now()->addDay(3))->formatWord('l')}}</h6>
+                                        <br>
+                                        <h6>{{verta(now()->addDay(3))->day . ' ' . verta(now()->addDay(3))->formatWord('F')}}</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item" style="width: 20%; margin: 0px">
+                                    <a class="nav-link waves-light text-muted" id="awesome-tab-classic-shadow"
+                                       data-toggle="tab" href="#awesome-classic-shadow" role="tab"
+                                       aria-controls="awesome-classic-shadow" aria-selected="false">
+                                        <h6>{{verta(now()->addDay(4))->formatWord('l')}}</h6>
+                                        <br>
+                                        <h6>{{verta(now()->addDay(4))->day . ' ' . verta(now()->addDay(4))->formatWord('F')}}</h6>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content card text-right" id="myClassicTabContentShadow">
+                                <div class="tab-pane fade active show" id="profile-classic-shadow" role="tabpanel"
+                                     aria-labelledby="profile-tab-classic-shadow">
+                                    <div class="custom-control custom-radio" style="margin-right: 80px">
+                                        <input type="radio" value="{{verta(now())}}" class="custom-control-input"
+                                               id="defaultUnchecked" name="defaultExampleRadios">
+                                        <label class="custom-control-label text-right text-muted"
+                                               for="defaultUnchecked"> ساعت 9 تا 22</label>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="follow-classic-shadow" role="tabpanel"
+                                     aria-labelledby="follow-tab-classic-shadow">
+                                    <div class="custom-control custom-radio" style="margin-right: 100px">
+                                        <input type="radio" value="{{verta(now())}}" class="custom-control-input"
+                                               id="defaultUnchecked" name="defaultExampleRadios">
+                                        <label class="custom-control-label text-right text-muted"
+                                               for="defaultUnchecked"> ساعت 9 تا 22</label>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="contact-classic-shadow" role="tabpanel"
+                                     aria-labelledby="contact-tab-classic-shadow">
+                                    <div class="custom-control custom-radio" style="margin-right: 100px">
+                                        <input type="radio" value="{{verta(now())}}" class="custom-control-input"
+                                               id="defaultUnchecked" name="defaultExampleRadios">
+                                        <label class="custom-control-label text-right text-muted"
+                                               for="defaultUnchecked"> ساعت 9 تا 22</label>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="awesome-classic-shadow" role="tabpanel"
+                                     aria-labelledby="awesome-tab-classic-shadow">
+                                    <div class="custom-control custom-radio" style="margin-right: 100px">
+                                        <input type="radio" value="{{verta(now())}}" class="custom-control-input"
+                                               id="defaultUnchecked" name="defaultExampleRadios">
+                                        <label class="custom-control-label text-right text-muted"
+                                               for="defaultUnchecked"> ساعت 9 تا 22</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Classic tabs -->
+
+                    </div>
+                </div>
+
+                <h4 class="text-muted text-right mt-4 pr-4"> صدور فاکتور </h4>
+                <div class="card card-ecommerce mt-4">
+                    <div class="card-body">
+                        <div class="form-check text-right mr-5 ">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="defaultUncheckedDisabled2"
+                                       width="30">
+                                <label class="custom-control-label" for="defaultUncheckedDisabled2"><h5 class="text-muted">درخواست ارسال فاکتور</h5></label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </section>

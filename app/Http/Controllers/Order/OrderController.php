@@ -59,9 +59,9 @@ class OrderController extends Controller
     public function shipping()
     {
         $user = Auth::user();
-        $address = $user->addresses()->get();
-        dd($address);
-        return view('shipping');
+        $addresses = $user->addresses()->get();
+//        dd($carts);
+        return view('shipping',compact('addresses'));
     }
 
     public function delete()
