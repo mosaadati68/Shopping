@@ -131,3 +131,18 @@ element.style {
     border-bottom: 0;
     border-left: .3em solid transparent
 }
+.count-cart{
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+    font-size: 1.286rem;
+    line-height: 28px;
+    vertical-align: middle;
+    letter-spacing: -.3px;
+    text-align: center;
+    color: #00bfd6;
+    border-radius: 100%;
+    display: block;
+    margin-right: 5px;
+}

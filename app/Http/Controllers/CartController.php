@@ -29,7 +29,7 @@ class CartController extends Controller
         $cart['name'] = $product->name;
         $cart['qty'] = 1;
         $cart['price'] = $product->price;
-        $cart['options'] = ['image' => $product->image];
+        $cart['options'] = ['image' => $product->image,'color'=>'سفید'];
         $cartItem = Cart::add($cart);
         $items = Cart::content();
         $tax = Cart::tax();
