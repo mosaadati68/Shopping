@@ -67,12 +67,14 @@
                         <div class="dropdown-menu dropdown-menu-right" style="width: 350px"
                              aria-labelledby="navbarDropdownMenuLink-4">
                             <div class="text-center mb-4 mt-4">
-                               <a href="{{route('login')}}"><button style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px"
-                                        class="btn btn-info btn-sm waves-effect waves-light text-center" type="submit">
-                                    ورود به همه
-                                    چی کالا
-                                </button>
-                               </a>
+                                <a href="{{route('login')}}">
+                                    <button style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px"
+                                            class="btn btn-info btn-sm waves-effect waves-light text-center"
+                                            type="submit">
+                                        ورود به همه
+                                        چی کالا
+                                    </button>
+                                </a>
                             </div>
                             <div class="text-center">
                                 <p class="text-right text-muted mr-2 d-inline-block ml-2" style="font-size: 20px">کاربر
@@ -126,22 +128,27 @@
                                 <div class="col-10">
                                     <div class="col">
                                         <div class="row-6 mb-2 text-muted">
-                                            <h6 class="font-weight-bold" style="display: inline-block; font-size: 20px">{{$item->name}}</h6>
+                                            <h6 class="font-weight-bold"
+                                                style="display: inline-block; font-size: 20px">{{$item->name}}</h6>
                                         </div>
                                         <div class="row-6">
-                                            <div class="col-12 font-weight-bold text-muted" style="font-family: IRANSans_Num">
+                                            <div class="col-12 font-weight-bold text-muted"
+                                                 style="font-family: IRANSans_Num">
                                                 <h6 style="display: inline-block">{{$item->qty}} عدد</h6>
-                                                <h6 style="display: inline-block"> | {{$item->options['color']}} رنگ </h6>
+                                                <h6 style="display: inline-block"> | {{$item->options['color']}}
+                                                    رنگ </h6>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-                       <a href="{{route('login')}}"><button style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px; width: 530px;margin: 0px;"
-                                class="btn btn-info btn-sm waves-effect waves-light text-center" type="submit">
-                            ورود و ثبت سفارش
-                        </button></a>
+                        <a href="{{route('login')}}">
+                            <button style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px; width: 530px;margin: 0px;"
+                                    class="btn btn-info btn-sm waves-effect waves-light text-center" type="submit">
+                                ورود و ثبت سفارش
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -332,7 +339,8 @@
 
     <script type="text/javascript" src="/js/wow.min.js"></script>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
+    <script src=""></script>
 
     <script type="text/javascript">
         /* WOW.js init */
@@ -502,6 +510,48 @@
                     toastr.success(response.data)
                 });
         }
+    </script>
+    <script>
+        $(function () {
+            $(".title").typed({
+                strings: ["شما می توانید با خرید از سایت ما "],
+                // Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
+                stringsElement: null,
+                // typing speed
+                typeSpeed: 30,
+                // time before typing starts
+                startDelay: 1200,
+                // backspacing speed
+                backSpeed: 20,
+                // time before backspacing
+                backDelay: 500,
+                // loop
+                loop: true,
+                // false = infinite
+                loopCount: 5,
+                // show cursor
+                showCursor: false,
+                // character for cursor
+                cursorChar: "|",
+                // attribute to type (null == text)
+                attr: null,
+                // either html or text
+                contentType: 'html',
+                // call when done callback function
+                callback: function () {
+                },
+                // starting callback function before each string
+                preStringTyped: function () {
+                },
+                //callback for every typed string
+                onStringTyped: function () {
+                },
+                // callback for reset
+                resetCallback: function () {
+                }
+            });
+        });
+
     </script>
 @show
 </body>

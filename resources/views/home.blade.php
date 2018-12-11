@@ -36,9 +36,9 @@
                                         </p>
                                     </li>
                                     <li>
-                                        <h5 class="h5-responsive dark-grey-text font-weight-bold mb-5">Tempora incidunt
-                                            ut
-                                            labore et dolore veritatis et quasi architecto beatae</h5>
+                                        <div>
+                                            <h3 class="text-muted text-right" style="margin-top: 300px"><span class="title"></span></h3>
+                                        </div>
                                     </li>
                                     <li>
                                         <a target="_blank" href="https://mdbootstrap.com/getting-started/"
@@ -490,17 +490,6 @@
                                      alt="sample image">
                                 <div class="mask rgba-white-light">
                                     <div class="dark-grey-text  pt-4 ml-3 pl-3">
-                                        <div>
-                                            <a>
-                                                <span class="badge badge-danger">bestseller</span>
-                                            </a>
-                                            <h2 class="card-title font-weight-bold pt-2">
-                                                <strong>This is news title</strong>
-                                            </h2>
-                                            <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-                                            <a class="btn btn-danger btn-sm btn-rounded clearfix d-none d-md-inline-block">Read
-                                                more</a>
-                                        </div>
                                     </div>
                                 </div>
 
