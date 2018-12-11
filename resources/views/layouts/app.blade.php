@@ -67,24 +67,25 @@
                         <div class="dropdown-menu dropdown-menu-right" style="width: 350px"
                              aria-labelledby="navbarDropdownMenuLink-4">
                             <div class="text-center mb-4 mt-4">
-                                <button style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px"
+                               <a href="{{route('login')}}"><button style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px"
                                         class="btn btn-info btn-sm waves-effect waves-light text-center" type="submit">
                                     ورود به همه
                                     چی کالا
                                 </button>
+                               </a>
                             </div>
                             <div class="text-center">
                                 <p class="text-right text-muted mr-2 d-inline-block ml-2" style="font-size: 20px">کاربر
                                     جدید هستید؟ </p>
                                 <a class="waves-effect waves-light text-muted"
                                    style="font-size: 20px; display:unset;color: #157ca1 !important; border-bottom: 1px dashed #008ec9;"
-                                   href="#">ثبت‌نام</a>
+                                   href="{{route('register')}}">ثبت‌نام</a>
                             </div>
                             <hr class="text-muted" style="height: 2px;">
                             <div class="row">
                                 <div class="col-6 text-center">
                                     <a class="waves-effect waves-light text-muted text-right" style="font-size: 20px"
-                                       href="#">پروفایل</a>
+                                       href="{{route('profile')}}">پروفایل</a>
                                 </div>
                                 <div class="col-6 text-center">
                                     <a class="waves-effect waves-light text-muted text-right" style="font-size: 20px"
@@ -137,10 +138,10 @@
                                 </div>
                             </div>
                         @endforeach
-                        <button style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px; width: 530px;margin: 0px;"
+                       <a href="{{route('login')}}"><button style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px; width: 530px;margin: 0px;"
                                 class="btn btn-info btn-sm waves-effect waves-light text-center" type="submit">
                             ورود و ثبت سفارش
-                        </button>
+                        </button></a>
                     </div>
                 </div>
             </div>
