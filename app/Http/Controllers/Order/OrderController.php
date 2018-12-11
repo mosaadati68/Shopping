@@ -27,12 +27,12 @@ class OrderController extends Controller
     public function checkout(Request $request)
     {
 
-//        $print_invoice = $request->get("print-invoice");
-//        $transmission_type = $request->get("transmission-type");
-//        $shipping_time = $request->get("shipping-time");
-//        $order = $this->addOrder($print_invoice,$transmission_type,$shipping_time);
-//        $payment = $this->newPayment($order->id);
-//        Cart::destroy();
+        $print_invoice = $request->get("print-invoice");
+        $transmission_type = $request->get("transmission-type");
+        $shipping_time = $request->get("shipping-time");
+        $order = $this->addOrder($print_invoice,$transmission_type,$shipping_time);
+        $payment = $this->newPayment($order->id);
+        Cart::destroy();
 //        \Mail::to($request->user())
 //            ->queue(new OrderPlaced($order));
         return redirect()->route('payment');

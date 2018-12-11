@@ -32,6 +32,7 @@
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
+
 <!--Navigation-->
 <header>
     <!-- Navbar -->
@@ -44,39 +45,68 @@
                            href="{{route('cart')}}">
                             <span id="cartCount" class="badge danger-color">{{Cart::content()->count()}}</span>
                             <i class="fa fa-shopping-cart blue-text" aria-hidden="true"></i>
-                            <span class="clearfix d-none d-sm-inline-block">سبد خرید</span>
+                            <span class="clearfix d-none d-sm-inline-block text-muted font-weight-bold">سبد خرید</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link waves-effect waves-light dark-grey-text font-weight-bold"
+                        <a class="nav-link waves-effect waves-light text-muted font-weight-bold"
                            href="{{route('contact')}}">
-                            <i class="fa fa-envelope blue-text"></i> تماس با ما
+                            <i class="fa fa-envelope blue-text" style="font-size: 15px"></i> تماس با ما
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item ml-3">
-                        <a class="nav-link waves-effect waves-light dark-grey-text font-weight-bold" href="#">
-                            <i class="fa fa-gear blue-text"></i> تنظیمات</a>
+                        <a class="nav-link waves-effect waves-light text-muted font-weight-bold " href="#">
+                            <i class="fa fa-gear blue-text" style="font-size: 15px"></i> تنظیمات</a>
                     </li>
-                    {{--                    @if (Auth::check())--}}
                     <li class="nav-item dropdown ml-3">
-                        <a class="nav-link dropdown-toggle waves-effect waves-light dark-grey-text font-weight-bold"
+                        <a class="nav-link dropdown-toggle waves-effect waves-light text-muted font-weight-bold"
                            id="navbarDropdownMenuLink-4" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user blue-text"></i> حساب کاربری </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-cyan"
+                            <i class="fa fa-user blue-text"></i> ورود / عضویت </a>
+                        <div class="dropdown-menu dropdown-menu-right" style="width: 350px"
                              aria-labelledby="navbarDropdownMenuLink-4">
-                            <a class="dropdown-item waves-effect waves-light text-md-right" href="#">پروفایل</a>
-                            <a class="dropdown-item waves-effect waves-light text-md-right"
-                               href="{{route('logout')}}">خروج</a>
+                            <div class="text-center mb-4 mt-4">
+                                <button style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px"
+                                        class="btn btn-info btn-sm waves-effect waves-light text-center" type="submit">
+                                    ورود به همه
+                                    چی کالا
+                                </button>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-right text-muted mr-2 d-inline-block ml-2" style="font-size: 20px">کاربر
+                                    جدید هستید؟ </p>
+                                <a class="waves-effect waves-light text-muted"
+                                   style="font-size: 20px; display:unset;color: #157ca1 !important; border-bottom: 1px dashed #008ec9;"
+                                   href="#">ثبت‌نام</a>
+                            </div>
+                            <hr class="text-muted" style="height: 2px;">
+                            <div class="row">
+                                <div class="col-6 text-center">
+                                    <a class="waves-effect waves-light text-muted text-right" style="font-size: 20px"
+                                       href="#">پروفایل</a>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <a class="waves-effect waves-light text-muted text-right" style="font-size: 20px"
+                                       href="{{route('logout')}}">خروج</a>
+                                </div>
+                            </div>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle waves-effect waves-light dark-grey-text font-weight-bold"
-                           data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            <i data-count="0" class="fa fa-belll"></i>
-                        </a>
+                    <li class="nav-item dropdown" style="margin-right: 700px;">
+                        <button class="btn btn-cyan dropdown-toggle dropdown-toggle-cart"
+                                style="border-radius: 5px; font-size:20px; font-family: IRANSansWeb"
+                                type="button" id="dropdownMenu3" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-shopping-cart" style="font-size: 25px;margin-left: 20px" aria-hidden="true"></i>
+                            سبد خرید
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu3" style="width: 450px">
+                            <h6 class="dropdown-header">Dropdown header</h6>
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -85,7 +115,7 @@
     <!-- /.Navbar -->
 </header>
 <!-- /.Navigation -->
-
+</div>
 @yield('intro')
 <div class="container-fluid">
     @yield('content')
