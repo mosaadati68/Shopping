@@ -32,7 +32,7 @@
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
-
+@routes
 <!--Navigation-->
 <header>
     <!-- Navbar -->
@@ -67,13 +67,12 @@
                         <div class="dropdown-menu dropdown-menu-right" style="width: 350px"
                              aria-labelledby="navbarDropdownMenuLink-4">
                             <div class="text-center mb-4 mt-4">
-                                <a href="{{route('login')}}">
-                                    <button style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px"
-                                            class="btn btn-info btn-sm waves-effect waves-light text-center"
-                                            type="submit">
-                                        ورود به همه
-                                        چی کالا
-                                    </button>
+                                <a style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px"
+                                   href="{{route('login')}}"
+                                   class="btn btn-info btn-sm waves-effect waves-light text-center"
+                                   type="submit">
+                                    ورود به همه
+                                    چی کالا
                                 </a>
                             </div>
                             <div class="text-center">
@@ -143,11 +142,10 @@
                                 </div>
                             </div>
                         @endforeach
-                        <a href="{{route('login')}}">
-                            <button style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px; width: 530px;margin: 0px;"
-                                    class="btn btn-info btn-sm waves-effect waves-light text-center" type="submit">
-                                ورود و ثبت سفارش
-                            </button>
+                        <a href="{{route('login')}}"
+                           style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px; width: 530px;margin: 0px;"
+                           class="btn btn-info btn-sm waves-effect waves-light text-center" type="submit">
+                            ورود و ثبت سفارش
                         </a>
                     </div>
                 </div>
@@ -340,7 +338,8 @@
     <script type="text/javascript" src="/js/wow.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
-    <script src=""></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/app.js"></script>
 
     <script type="text/javascript">
         /* WOW.js init */
@@ -360,120 +359,6 @@
     <script>
         // SideNav Initialization
         $(".button-collapse").sideNav();
-
-        function addWishlist(productId) {
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            $.ajax({
-                /* the route pointing to the post function */
-                url: '/addWishlist',
-                type: 'POST',
-                /* send the csrf-token and the input to the controller */
-                data: {_token: CSRF_TOKEN, id: productId},
-                dataType: 'JSON',
-                /* remind that 'data' is the response of the AjaxController */
-                success: function (data) {
-                    toastr.options = {
-                        "closeButton": false,
-                        "debug": false,
-                        "rtl": true,
-                        "newestOnTop": false,
-                        "progressBar": true,
-                        "positionClass": "toast-top-right",
-                        "preventDuplicates": false,
-                        "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "3000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    }
-                    if (data.status) {
-                        toastr.error(data.message)
-                    } else {
-                        toastr.success(data.message)
-                        setTimeout(function () {
-                            location.reload();
-                        }, 3000);
-                    }
-                }
-            });
-        }
-
-        function ratingPost(rate, productId) {
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            $.ajax({
-                /* the route pointing to the post function */
-                url: '/ratingProduct',
-                type: 'POST',
-                /* send the csrf-token and the input to the controller */
-                data: {_token: CSRF_TOKEN, rate: rate, productId: productId},
-                dataType: 'JSON',
-                /* remind that 'data' is the response of the AjaxController */
-                success: function (data) {
-                    toastr.options = {
-                        "closeButton": false,
-                        "debug": false,
-                        "rtl": true,
-                        "newestOnTop": false,
-                        "progressBar": true,
-                        "positionClass": "toast-top-right",
-                        "preventDuplicates": false,
-                        "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "3000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    }
-                    toastr.success(data.message)
-                    setTimeout(function () {
-                        location.reload();
-                    }, 3000);
-                }
-            });
-        }
-
-        function addCart(productId) {
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            $.ajax({
-                /* the route pointing to the post function */
-                url: '/cart/add',
-                type: 'POST',
-                /* send the csrf-token and the input to the controller */
-                data: {_token: CSRF_TOKEN, id: productId},
-                dataType: 'JSON',
-                /* remind that 'data' is the response of the AjaxController */
-                success: function (data) {
-                    toastr.options = {
-                        "closeButton": false,
-                        "debug": false,
-                        "rtl": true,
-                        "newestOnTop": false,
-                        "progressBar": true,
-                        "positionClass": "toast-top-right",
-                        "preventDuplicates": false,
-                        "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "3000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    }
-                    toastr.success(data.message)
-                    document.getElementById("cartCount").innerHTML = data.cart.count;
-                }
-            });
-        }
-
     </script>
     <script type="text/javascript">
         var path = "{{ route('autocomplete') }}";

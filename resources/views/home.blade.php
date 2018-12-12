@@ -1257,8 +1257,7 @@
                 <!--Section: product list-->
                 <section class="mb-5">
 
-                    <section class="text-center my-5 p-1 productlist">
-
+                    <section class="text-center my-5 p-1 productlist" id="productlist">
                         <!-- Grid row -->
                         <div class="row">
                         @foreach ($products->chunk(4) as $chunk)

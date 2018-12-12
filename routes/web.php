@@ -15,11 +15,8 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/product/{slug}', 'ProductController@show')->name('product.show');
-Route::post('/ratingProduct', 'ProductController@ratingProduct')->name('ratingProduct');
-Route::post('/addWishlist', 'WishlistController@addWishlist')->name('addWishlist');
-//Route::get('/home', 'HomeController@index')->name('home');
-
-
+Route::post('/ratingProduct', 'ProductController@ratingProduct')->name('product.rating');
+Route::get('/addWishlist/{id}', 'WishlistController@addWishlist')->name('wishlist.store');
 Route::get('/cart', 'CartController@index')->name('cart');
 Route::post('/cart/add', 'CartController@add')->name('cart.add');
 Route::post('/cart/update', 'CartController@update')->name('cart.update');

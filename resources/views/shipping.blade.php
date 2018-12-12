@@ -445,11 +445,11 @@
                                             <a class="text-right float-right" href="#"
                                                style="border-bottom: dashed;border-bottom-width: 2px;color: #00bfd6">اطلاح
                                                 این آدرس </a>
-                                            <a href="http://localhost:8000/panel/checkout" type="button"
+                                            <button href="http://localhost:8000/panel/checkout" type="button"
                                                class="float-left btn waves-effect waves-light font-weight-bold checkout-btn">
                                                 تغییر آدرس ارسال
                                                 <i class="fa fa-angle-left left"></i>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
 

@@ -25,18 +25,48 @@ class WishlistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addWishlist(Request $request)
+    public function addWishlist(Request $request, $id)
     {
-        $product = Product::find($request->id);
-        $findWishlist = Wishlist::findById($request->id);
-        if ($findWishlist) {
-            return response(['message' => 'محصول به علاقه مندی افزوده شده است','status'=> true]);
+        if (Auth::check()) {
+            $product = Product::find($id);
+            $findWishlist = Wishlist::findById($id);
+            if ($findWishlist) {
+                $findWishlist->delete();
+                $products = Product::paginate(12);
+                $wishlist = Auth::user()->wishlist()->pluck('product_id');
+                $productlist = view('partials.productlist',[
+                    'products' => $products,
+                    'wishlist' => $wishlist ? $wishlist->toArray() : $wishlist
+                ])->render();
+
+                return response(                    [
+                    'message' => 'محصول از لیست علاقه مندی حذف گردید.',
+                    'status' => false,
+                    'isLogin' => true,
+                    'productlist'=>$productlist
+                ]);
+
+            } else {
+                $wishlist = new Wishlist;
+                $wishlist->user_id = Auth::user()->id;
+                $wishlist->product_id = $product->id;
+                $wishlist->save();
+                $products = Product::paginate(12);
+                $wishlist = Auth::user()->wishlist()->pluck('product_id');
+                $productlist = view('partials.productlist',[
+                    'products' => $products,
+                    'wishlist' => $wishlist ? $wishlist->toArray() : $wishlist
+                ])->render();
+
+                return response(                    [
+                        'message' => 'محصول از لیست علاقه مندی حذف گردید.',
+                        'status' => true,
+                        'isLogin' => true,
+                        'productlist'=>$productlist
+                    ]);
+            }
         } else {
-            $wishlist = new Wishlist;
-            $wishlist->user_id = Auth::user()->id;
-            $wishlist->product_id = $product->id;
-            $wishlist->save();
-            return response(['message' => 'محصول افزوده گردید']);
+            return response(['isLogin' => false]);
         }
     }
 
