@@ -1312,7 +1312,7 @@
                   </span>
                                                     <span class="float-right">
                     <a data-toggle="tooltip" data-placement="top" title="" data-original-title="افزودن به سبد خرید"
-                       onclick="addCart({{ $product->id }})">
+                       onclick="addToCart({{ $product->id }})">
                       <i class="fa fa-shopping-cart grey-text ml-3"></i>
                     </a>
                     <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Share">

@@ -40,14 +40,6 @@
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
                 <ul class="navbar-nav ml-auto" style="font-size: 18px">
-                    <li class="nav-item ">
-                        <a class="nav-link dark-grey-text font-weight-bold waves-effect waves-light"
-                           href="{{route('cart')}}">
-                            {{--                            <span id="cartCount" class="badge danger-color">{{Cart::content()->count()}}</span>--}}
-                            <i class="fa fa-shopping-cart blue-text" aria-hidden="true"></i>
-                            <span class="clearfix d-none d-sm-inline-block text-muted font-weight-bold">سبد خرید</span>
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link waves-effect waves-light text-muted font-weight-bold"
                            href="{{route('contact')}}">
@@ -96,7 +88,7 @@
                         </div>
                     </li>
                 </ul>
-                <div class="nav-item dropdown" style="font-family: IRANSansWeb">
+                <div class="nav-item dropdown" style="font-family: IRANSansWeb" >
                     <button class="btn btn-cyan dropdown-toggle dropdown-toggle-cart"
                             style="border-radius: 5px; font-size:20px; font-family: IRANSansWeb;padding: 10px"
                             type="button" id="dropdownMenu3" data-toggle="dropdown"
@@ -107,7 +99,7 @@
                         <span id="cartCount" class="badge badge-pill mr-3 mt-2"
                               style="font-family: IRANSans_Num">{{Cart::content()->count()}}</span>
                     </button>
-                    <div class="dropdown-menu text-right" aria-labelledby="dropdownMenu3"
+                    <div class="dropdown-menu text-right" aria-labelledby="dropdownMenu3" id="cartMenu"
                          style="width: 550px; font-family: IRANSansWeb">
                         <h5 class="text-muted mt-2 mr-2 font-weight-bold d-inline-block">مبلغ کل خرید :
                             <span class="font-weight-bold" style="font-family: IRANSans_Num; color:#fb3449"> {{Cart::total()}}
@@ -349,7 +341,7 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
-    </script>
+    </script>a
     <script>
         // Material Select Initialization
         $(document).ready(function () {

@@ -25,7 +25,7 @@ class WishlistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addWishlist(Request $request, $id)
+    public function addWishlist($id)
     {
         if (Auth::check()) {
             $product = Product::find($id);

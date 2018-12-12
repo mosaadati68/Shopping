@@ -21,64 +21,54 @@ class CartController extends Controller
         return view('cart', compact('items', $items, 'tax', $tax, 'total', $total, 'subtotal', $subtotal, 'count', $count));
     }
 
-    public function add(Request $request)
+    public function add($id)
     {
-        $product = Product::find($request->id);
+        $product = Product::find($id);
         $cart = [];
         $cart['id'] = $product->id;
         $cart['name'] = $product->name;
         $cart['qty'] = 1;
         $cart['price'] = $product->price;
-        $cart['options'] = ['image' => $product->image,'color'=>'سفید'];
+        $cart['options'] = ['image' => $product->image, 'color' => 'سفید'];
         $cartItem = Cart::add($cart);
         $items = Cart::content();
         $tax = Cart::tax();
         $total = Cart::total();
         $subtotal = Cart::subtotal();
         $count = Cart::content()->count();
-        return response()->json([
-            'cart' =>
-                [
-                    'items' => $items,
-                    'count' => $count
-                ],
-            'message' => 'محصول به سبد خرید افزوده گردید'
-        ], 200);
+        $cartMenu = view('partials.cartMenu')->render();
+        return response(
+            [
+                'count' => $count,
+                'cartMenu' => $cartMenu,
+                'message' => 'محصول به سبد خرید افزوده گردید'
+            ]
+        );
     }
 
     public function update(Request $request)
     {
         $result = Cart::update($request->rowId, $request->qty);
-        $items = Cart::content();
-        $tax = Cart::tax();
-        $total = Cart::total();
-        $subtotal = Cart::subtotal();
-        $count = Cart::count();
-        return response()->view('partials.cart',
+        $cart = view('partials.cart')->render();
+        $cartMenu = view('partials.cartMenu')->render();
+        return response(
             [
-                'items' => $items,
-                'tax' => $tax,
-                'total' => $total,
-                'subtotal' => $subtotal,
-                'count' => $count
-            ]);
+                'cart' => $cart,
+                'cartMenu'=>$cartMenu,
+                'message' => 'تغییرات با موفقیت ثبت گردید.'
+            ]
+        );
     }
 
     public function delete(Request $request)
     {
         Cart::remove($request->rowId);
-        $items = Cart::content();
-        $tax = Cart::tax();
-        $total = Cart::total();
-        $subtotal = Cart::subtotal();
-        $count = Cart::count();
-        return response()->view('partials.cart',
+        $cart = view('partials.cart')->render();
+        return response(
             [
-                'items' => $items,
-                'tax' => $tax,
-                'total' => $total,
-                'subtotal' => $subtotal,
-                'count' => $count
-            ]);
+                'cart' => $cart,
+                'message' => 'تغییرات با موفقیت ثبت گردید.'
+            ]
+        );
     }
 }

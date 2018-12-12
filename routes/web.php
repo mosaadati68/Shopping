@@ -17,8 +17,10 @@ Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/product/{slug}', 'ProductController@show')->name('product.show');
 Route::post('/ratingProduct', 'ProductController@ratingProduct')->name('product.rating');
 Route::get('/addWishlist/{id}', 'WishlistController@addWishlist')->name('wishlist.store');
+Route::post('/newsletter', 'NewsletterController@store');
+//Cart Routes
 Route::get('/cart', 'CartController@index')->name('cart');
-Route::post('/cart/add', 'CartController@add')->name('cart.add');
+Route::get('/cart/add/{id}', 'CartController@add')->name('cart.add');
 Route::post('/cart/update', 'CartController@update')->name('cart.update');
 Route::post('/cart/delete', 'CartController@delete')->name('cart.delete');
 Route::post('/cart/destroy', 'CartController@destroy')->name('cart.destroy');
@@ -26,7 +28,17 @@ Route::post('/cart/destroy', 'CartController@destroy')->name('cart.destroy');
 Route::get('/getCity/{province_id}', 'Panel\DashboardController@getCity')->name('getCity');
 Route::post('/address', 'Panel\DashboardController@saveAddress')->name('save.address');
 
-Route::post('/newsletter', 'NewsletterController@store');
+Route::group(['middleware' => 'auth:web'], function () {
+    $this->get('/shipping', 'Order\OrderController@shipping')->name('shipping.order');
+    $this->post('/checkout', 'Order\OrderController@checkout')->name('checkout.order');
+    $this->get('/payment', 'Order\OrderController@show_payment')->name('payment');
+
+});
+
+Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+//Route::get('search', 'SearchController@index')->name('search');
+Route::post('search', 'SearchController@search')->name('searchProduct');
+Route::get('autocomplete', 'SearchController@autocomplete')->name('autocomplete');
 
 Route::group(['prefix' => 'panel','middleware' => 'auth:web'], function () {
     $this->post('/checkout', 'Order\OrderController@checkout')->name('checkout');
@@ -57,75 +69,4 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:web'], function () {
     $this::post('/ProductImagesUpload', 'Panel\ProductController@ProductImagesUpload')->name('ProductImagesUpload');
     $this::get('/getCategoryName/{category_name}', 'Panel\ProductController@getCategoryName')->name('getCategoryName');
 
-});
-
-Route::group(['middleware' => 'auth:web'], function () {
-    $this->get('/shipping', 'Order\OrderController@shipping')->name('shipping.order');
-    $this->post('/checkout', 'Order\OrderController@checkout')->name('checkout.order');
-    $this->get('/payment', 'Order\OrderController@show_payment')->name('payment');
-
-});
-
-$this::get('/panel', 'Panel\DashboardController@index')->name('dashboard');
-
-
-Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-Route::get('/location', function () {
-//    $location = GeoIP::getLocation('10.56.90.98');
-//    dd($location);
-    $cartItem = [];
-    $carts = Cart::content();
-});
-
-//Route::get('search', 'SearchController@index')->name('search');
-Route::post('search', 'SearchController@search')->name('searchProduct');
-Route::get('autocomplete', 'SearchController@autocomplete')->name('autocomplete');
-
-
-Route::get('test', 'HomeController@test')->name('test');
-
-Route::get('invoice', function () {
-//    require_once 'C:\xampp\htdocs\Shopping\public\fonts\IRANSansWeb_Num\ttf';
-    $defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
-    $fontDirs = $defaultConfig['fontDir'];
-
-    $defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
-    $fontData = $defaultFontConfig['fontdata'];
-
-    $mpdf = new \Mpdf\Mpdf([
-        'fontDir' => array_merge($fontDirs, [
-            'C:\xampp\htdocs\Shopping\public\fonts\IRANSansWeb_Num\ttf',
-        ]),
-        'fontdata' => $fontData + [
-                "IRANSans" => [
-                    'R' => "IRANSansWeb.otf",
-                    'useOTL' => 0xFF,
-                ]
-            ],
-        'default_font' => 'IRANSans'
-    ]);
-    $mpdf->WriteHTML(Illuminate\Support\Facades\View::make('invoices.invoice')->render());
-    $output = $mpdf->Output();
-
-//    $pdf = new \App\invoice\Invoice();
-//    $output = $pdf->generate();
-    \Illuminate\Support\Facades\Storage::put('invoice.pdf', $output);
-});
-
-//Route::get('test', function () {
-//    event(new App\Events\StatusLiked('Someone'));
-//    return "Event has been sent!";
-//    $product = \App\Product::where('id',1)->first();
-//    Notification::send(\App\User::all(), new \App\Notifications\NewMessage($product));
-//    $role = \Spatie\Permission\Models\Role::create(['name' => 'admin']);
-//    $permission = \Spatie\Permission\Models\Permission::create(['name' => 'create products']);
-//    $permission = \Spatie\Permission\Models\Permission::create(['name' => 'delete products']);
-//    $permission = \Spatie\Permission\Models\Permission::create(['name' => 'update products'])
-//    $permissions = $user->getAllPermissions();
-//    $role->syncPermissions($permissions);
-//});
-Route::get('pusher', function () {
-    $product = App\Product::find(1);
-    $image = $product->images;
-    dd($image);
 });

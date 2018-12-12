@@ -642,7 +642,7 @@
 
                             <div class="row mt-3 mb-4">
                                 <div class="col-md-12 text-center text-md-left text-md-right">
-                                    <a class="btn btn-primary btn-rounded waves-effect waves-light" onclick='addCart({{$product->id}})'
+                                    <a class="btn btn-primary btn-rounded waves-effect waves-light" onclick='addToCart({{$product->id}})'
                                             style="font-family: IRANSans">
                                         <i class="fa fa-cart-plus mr-2" aria-hidden="true"></i> افزودن به سبد
                                     </a>

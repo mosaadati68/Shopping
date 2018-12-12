@@ -414,7 +414,7 @@
                     <div class="card-body">
                         <!-- Shopping Cart table -->
                         <div class="table-responsive">
-                            @if($count > 0)
+                            @if( Cart::count() > 0)
                                 <table class="table product-table">
 
                                     <!-- Table head -->
@@ -442,6 +442,9 @@
 
                                     <!-- Table body -->
                                     <tbody>
+                                    @php
+                                        $items = Cart::content();
+                                    @endphp
                                     @foreach($items as $item)
 
                                         <tr>
@@ -462,7 +465,7 @@
                                                         style="width: 60px;margin:auto"
                                                         id="Qty_{{$item->rowId}}"
                                                         style="width: 60px"
-                                                        onchange="updateItem('{{$item->rowId}}')">
+                                                        onchange="updateCart('{{$item->rowId}}')">
                                                     @for($i = 1; $i < 15; $i++)
                                                         @if( $item->qty == $i)
                                                             <option selected
@@ -535,7 +538,7 @@
                                             تومان </h5>
                                     </div>
                                     <div class="row-6">
-                                        <h6 class="text-muted text-center pr-1 mt-3"><a href="{{route('shipping.order')}}"
+                                        <h6 class="text-muted text-center pr-1 mt-3"><a href="{{route('checkout')}}"
                                                                                         type="button"
                                                                                         class="btn btn-primary btn-rounded waves-effect waves-light font-weight-bold"
                                                                                         style="font-family: IRANSansWeb">ادامه
@@ -562,13 +565,19 @@
                             <div class="card-body">
                                 <div class="col text-center">
                                     <div class="row-6 mt-4">
-                                        <h5 class="text-muted text-right"><img width="25" height="25" class="ml-2" src="/img/svg/a8d65c7a.svg">هفت روز ضمانت تعویض </h5>
+                                        <h5 class="text-muted text-right"><img width="25" height="25" class="ml-2"
+                                                                               src="/img/svg/a8d65c7a.svg">هفت روز ضمانت تعویض
+                                        </h5>
                                     </div>
                                     <div class="row-12">
-                                        <h5 class="text-muted text-right"><img width="25" height="25" class="ml-2" src="/img/svg/3e2ec4e5.svg">پرداخت در محل با کارت بانکی</h5>
+                                        <h5 class="text-muted text-right"><img width="25" height="25" class="ml-2"
+                                                                               src="/img/svg/3e2ec4e5.svg">پرداخت در محل با کارت
+                                            بانکی</h5>
                                     </div>
                                     <div class="row-6">
-                                        <h6 class="text-muted text-right pr-1 mt-3"><img width="25" height="25" class="ml-2" src="/img/svg/0e30c4eb.svg">تحویل اکسپرس</h6>
+                                        <h6 class="text-muted text-right pr-1 mt-3"><img width="25" height="25" class="ml-2"
+                                                                                         src="/img/svg/0e30c4eb.svg">تحویل
+                                            اکسپرس</h6>
                                     </div>
                                 </div>
 
@@ -1189,24 +1198,4 @@
 @section('footerScripts')
     @parent
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script>
-        function updateItem(rowId) {
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            var Qty = '#Qty_' + rowId;
-            var qty = $(Qty).val();
-            axios.post('/cart/update', {_token: CSRF_TOKEN, rowId: rowId, qty: qty})
-                .then(function (response) {
-                    $('#cart_content').html(response.data);
-                });
-        }
-
-        function removeItem(rowId) {
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            axios.post('/cart/delete', {_token: CSRF_TOKEN, rowId: rowId})
-                .then(function (response) {
-                    $('#cart_content').html(response.data);
-                });
-        }
-
-    </script>
 @endsection
