@@ -27,38 +27,42 @@ class ProductController extends Controller
      */
     public function ratingProduct(Request $request)
     {
-        $UserProduct = Rate::where('product_id', $request->productId)
-            ->where('user_id', Auth::user()->id)->exists();
-        if ($UserProduct) {
-            $product = Product::find($request->productId);
-            $rateing = Rate::where('product_id', $request->productId)
-                ->where('user_id', Auth::user()->id)->first();
-            $rateing = Rate::find($rateing->id);
-            $rateing->rate = $request->rate + 1;
-            $rateing->save();
-            $avg = Rate::where('product_id', $request->productId)->pluck('rate')->avg();
-            $product->rate = $avg;
-            $product->save();
+        if (Auth::check()) {
+            $UserProduct = Rate::where('product_id', $request->productId)
+                ->where('user_id', Auth::user()->id)->exists();
+            if ($UserProduct) {
+                $product = Product::find($request->productId);
+                $rateing = Rate::where('product_id', $request->productId)
+                    ->where('user_id', Auth::user()->id)->first();
+                $rateing = Rate::find($rateing->id);
+                $rateing->rate = $request->rate + 1;
+                $rateing->save();
+                $avg = Rate::where('product_id', $request->productId)->pluck('rate')->avg();
+                $product->rate = $avg;
+                $product->save();
+            } else {
+                $rate = new Rate();
+                $rate->rate = $request->rate + 1;
+                $rate->product_id = $request->productId;
+                $rate->user_id = Auth::user()->id;
+                $rate->save();
+            }
+            $products = Product::paginate(12);
+            $wishlist = Auth::user()->wishlist()->pluck('product_id');
+
+            $productlist = view('partials.productlist', [
+                'products' => $products,
+                'wishlist' => $wishlist ? $wishlist->toArray() : $wishlist
+            ])->render();
+
+            return response([
+                'message' => 'رتبه شما ثبت گردید.',
+                'isLogin' => true,
+                'productlist' => $productlist,
+            ]);
         } else {
-            $rate = new Rate();
-            $rate->rate = $request->rate + 1;
-            $rate->product_id = $request->productId;
-            $rate->user_id = Auth::user()->id;
-            $rate->save();
+            return response(['isLogin' => false]);
         }
-        $products = Product::paginate(12);
-        $wishlist = Auth::user()->wishlist()->pluck('product_id');
-
-        $productlist = view('partials.productlist',[
-            'products' => $products,
-            'wishlist' => $wishlist ? $wishlist->toArray() : $wishlist
-        ])->render();
-
-        return response(                    [
-            'message' => 'رتبه شما ثبت گردید.',
-            'isLogin' => true,
-            'productlist'=>$productlist,
-        ]);
     }
 
     /**
