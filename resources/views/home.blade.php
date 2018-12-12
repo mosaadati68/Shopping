@@ -1290,13 +1290,13 @@
                                                 <ul class="rating">
                                                     @for ($i = 0; $i < $product->rate ; $i++)
                                                         <li>
-                                                            <a onclick='ratingPost( {{ $i }},{{ $product->id }} )'><i
+                                                            <a onclick='ratingProduct( {{ $i }},{{ $product->id }} )'><i
                                                                         class="fa fa-star"></i></a>
                                                         </li>
                                                     @endfor
                                                     @for ($i = 0; $i < 5 - $product->rate ; $i++)
                                                         <li>
-                                                            <a onclick='ratingPost( {{ $i + $product->rate }},{{ $product->id }} )'><i
+                                                            <a onclick='ratingProduct( {{ $i + $product->rate }},{{ $product->id }} )'><i
                                                                         class="fa fa-star-o"></i></a>
                                                         </li>
                                                     @endfor

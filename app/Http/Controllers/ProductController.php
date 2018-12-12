@@ -47,7 +47,18 @@ class ProductController extends Controller
             $rate->save();
         }
         $products = Product::paginate(12);
-        return response(['message' => 'رتبه شما ثبت گردید', 'products' => $products]);
+        $wishlist = Auth::user()->wishlist()->pluck('product_id');
+
+        $productlist = view('partials.productlist',[
+            'products' => $products,
+            'wishlist' => $wishlist ? $wishlist->toArray() : $wishlist
+        ])->render();
+
+        return response(                    [
+            'message' => 'رتبه شما ثبت گردید.',
+            'isLogin' => true,
+            'productlist'=>$productlist,
+        ]);
     }
 
     /**

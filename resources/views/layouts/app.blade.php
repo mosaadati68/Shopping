@@ -88,7 +88,7 @@
                         </div>
                     </li>
                 </ul>
-                <div class="nav-item dropdown" style="font-family: IRANSansWeb" >
+                <div class="nav-item dropdown" style="font-family: IRANSansWeb" id="cartMenu">
                     <button class="btn btn-cyan dropdown-toggle dropdown-toggle-cart"
                             style="border-radius: 5px; font-size:20px; font-family: IRANSansWeb;padding: 10px"
                             type="button" id="dropdownMenu3" data-toggle="dropdown"
@@ -99,7 +99,7 @@
                         <span id="cartCount" class="badge badge-pill mr-3 mt-2"
                               style="font-family: IRANSans_Num">{{Cart::content()->count()}}</span>
                     </button>
-                    <div class="dropdown-menu text-right" aria-labelledby="dropdownMenu3" id="cartMenu"
+                    <div class="dropdown-menu text-right" aria-labelledby="dropdownMenu3"
                          style="width: 550px; font-family: IRANSansWeb">
                         <h5 class="text-muted mt-2 mr-2 font-weight-bold d-inline-block">مبلغ کل خرید :
                             <span class="font-weight-bold" style="font-family: IRANSans_Num; color:#fb3449"> {{Cart::total()}}
