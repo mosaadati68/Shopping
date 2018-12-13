@@ -39,113 +39,134 @@
     <nav class="navbar fixed-top navbar-expand-lg  navbar-light scrolling-navbar white">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
-                <ul class="navbar-nav ml-auto" style="font-size: 18px">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link waves-effect waves-light text-muted font-weight-bold"
+                        <a class="nav-link waves-effect waves-light text-muted font-weight-bold" style="font-size: 12px"
                            href="{{route('contact')}}">
                             <i class="fa fa-envelope blue-text"></i> تماس با ما
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item ml-3">
-                        <a class="nav-link waves-effect waves-light text-muted font-weight-bold " href="#">
+                        <a class="nav-link waves-effect waves-light text-muted font-weight-bold " href="#"
+                           style="font-size: 12px">
                             <i class="fa fa-gear blue-text"></i> تنظیمات</a>
                     </li>
-                    <li class="nav-item dropdown ml-3">
+                    <li class="nav-item dropdown ml-3" style="font-size: 12px">
                         <a class="nav-link dropdown-toggle waves-effect waves-light text-muted font-weight-bold"
                            id="navbarDropdownMenuLink-4" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-user blue-text"></i> ورود / عضویت </a>
-                        <div class="dropdown-menu dropdown-menu-right" style="width: 350px"
+                        <div class="dropdown-menu dropdown-menu-right" style="width: 250px"
                              aria-labelledby="navbarDropdownMenuLink-4">
                             <div class="text-center mb-4 mt-4">
-                                <a style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px"
+                                <a style="font-family: IRANSansWeb; font-size: 15px; border-radius: 5px"
                                    href="{{route('login')}}"
-                                   class="btn btn-info btn-sm waves-effect waves-light text-center"
+                                   class="btn btn-info btn-sm waves-effect waves-light text-center font-weight-bold"
                                    type="submit">
                                     ورود به همه
                                     چی کالا
                                 </a>
                             </div>
                             <div class="text-center">
-                                <p class="text-right text-muted mr-2 d-inline-block ml-2" style="font-size: 20px">کاربر
+                                <p class="text-right text-muted mr-2 d-inline-block ml-2" style="font-size: 15px">کاربر
                                     جدید هستید؟ </p>
                                 <a class="waves-effect waves-light text-muted"
-                                   style="font-size: 20px; display:unset;color: #157ca1 !important; border-bottom: 1px dashed #008ec9;"
+                                   style="font-size: 15px; display:unset;color: #157ca1 !important; border-bottom: 1px dashed #008ec9;"
                                    href="{{route('register')}}">ثبت‌نام</a>
                             </div>
                             <hr class="text-muted" style="height: 2px;">
                             <div class="row">
                                 <div class="col-6 text-center">
-                                    <a class="waves-effect waves-light text-muted text-right" style="font-size: 20px"
+                                    <a class="waves-effect waves-light text-muted text-right" style="font-size: 15px"
                                        href="{{route('profile')}}">پروفایل</a>
                                 </div>
                                 <div class="col-6 text-center">
-                                    <a class="waves-effect waves-light text-muted text-right" style="font-size: 20px"
+                                    <a class="waves-effect waves-light text-muted text-right" style="font-size: 15px"
                                        href="{{route('logout')}}">خروج</a>
                                 </div>
                             </div>
                         </div>
                     </li>
                 </ul>
-                <div class="nav-item dropdown" style="font-family: IRANSansWeb" id="cartMenu">
-                    <button class="btn btn-cyan dropdown-toggle dropdown-toggle-cart"
-                            style="border-radius: 5px; font-size:20px; font-family: IRANSansWeb;padding: 10px"
-                            type="button" id="dropdownMenu3" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-shopping-cart" style="font-size: 25px; margin-left: 10px"
-                           aria-hidden="true"></i>
-                        سبد خرید
-                        <span id="cartCount" class="badge badge-pill mr-3 mt-2"
-                              style="font-family: IRANSans_Num">{{Cart::content()->count()}}</span>
-                    </button>
-                    <div class="dropdown-menu text-right" aria-labelledby="dropdownMenu3"
-                         style="width: 550px; font-family: IRANSansWeb">
-                        <h5 class="text-muted mt-2 mr-2 font-weight-bold d-inline-block">مبلغ کل خرید :
-                            <span class="font-weight-bold" style="font-family: IRANSans_Num; color:#fb3449"> {{Cart::total()}}
-                                تومان </span>
-                        </h5>
-                        <a href="{{route('cart')}}"><h5 class="font-weight-bold d-inline-block mt-2 ml-2 float-left"
-                                                        style="font-family: IRANSans_Num;"> مشاهده سبد خرید</h5></a>
-                        @php
-                            $carts = Cart::content()
-                        @endphp
-                        @foreach($carts as $item)
-                            <div class="row mb-2 mt-3 mr-3">
-                                <div class="col-2">
-                                    <img width="70" height="70" src="{{$item->options['image']}}"
-                                         style="border-radius: 5px;display: inline-block">
-                                </div>
-                                <div class="col-10">
-                                    <div class="col">
-                                        <div class="row-6 mb-2 text-muted">
-                                            <h6 class="font-weight-bold"
-                                                style="display: inline-block; font-size: 20px">{{$item->name}}</h6>
-                                        </div>
-                                        <div class="row-6">
-                                            <div class="col-12 font-weight-bold text-muted"
-                                                 style="font-family: IRANSans_Num">
-                                                <h6 style="display: inline-block">{{$item->qty}} عدد</h6>
-                                                <h6 style="display: inline-block"> | {{$item->options['color']}}
-                                                    رنگ </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                        <a href="{{route('login')}}"
-                           style="font-family: IRANSansWeb; font-size: 20px; border-radius: 5px; width: 530px;margin: 0px;"
-                           class="btn btn-info btn-sm waves-effect waves-light text-center" type="submit">
-                            ورود و ثبت سفارش
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
     </nav>
     <!-- /.Navbar -->
 </header>
+<div style="margin-top: 100px" class="container-fluid">
+    <div class="row">
+        <div class="col-2"><img class="mr-5" src="{{asset('/img/logo.png')}}" width="200" height="45"></div>
+        <div class="col-7">
+            <div class="c-header__search mr-5">
+                <div class="c-search js-search is-active" data-event="using_search_box"
+                     data-event-category="header_section">
+                    <input type="text" name="q" height="15" style="font-family: IRANSansWeb"
+                           placeholder="نام کالا، برند و یا دسته مورد نظر خود را جستجو کنید…"
+                           class="js-search-input" autocomplete="off">
+                    <button class="c-search__button js-header-search-button"></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="nav-item dropdown float-left ml-5" style="font-family: IRANSansWeb" id="cartMenu">
+                <button class="btn btn-cyan dropdown-toggle dropdown-toggle-cart"
+                        style="border-radius: 5px; font-family: IRANSansWeb;padding: 5px;margin-top: 0px;"
+                        type="button" id="dropdownMenu3" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-shopping-cart" style="font-size: 15px; margin-left: 10px"
+                       aria-hidden="true"></i>
+                    سبد خرید
+                    <span id="cartCount" class="badge badge-pill mr-3 mt-2"
+                          style="font-family: IRANSans_Num">{{Cart::content()->count()}}</span>
+                </button>
+                <div class="dropdown-menu text-right" aria-labelledby="dropdownMenu3"
+                     style="width: 400px; font-family: IRANSansWeb">
+                    <h5 class="text-muted mt-2 mr-2 font-weight-bold d-inline-block" style="font-size: 15px">مبلغ کل
+                        خرید :
+                        <span class="font-weight-bold" style="font-family: IRANSans_Num; color:#fb3449"> {{Cart::total()}}
+                            تومان </span>
+                    </h5>
+                    <a href="{{route('cart')}}"><h5 class="font-weight-bold d-inline-block mt-2 ml-2 float-left"
+                                                    style="font-family: IRANSans_Num;font-size: 15px"> مشاهده سبد
+                            خرید</h5></a>
+                    @php
+                        $carts = Cart::content()
+                    @endphp
+                    @foreach($carts as $item)
+                        <div class="row mb-2 mt-3 mr-3">
+                            <div class="col-2">
+                                <img width="70" height="70" src="{{$item->options['image']}}"
+                                     style="border-radius: 5px;display: inline-block">
+                            </div>
+                            <div class="col-10">
+                                <div class="col">
+                                    <div class="row-6 mb-2 text-muted">
+                                        <h6 class="font-weight-bold"
+                                            style="display: inline-block; font-size: 15px">{{$item->name}}</h6>
+                                    </div>
+                                    <div class="row-6">
+                                        <div class="col-12 font-weight-bold text-muted"
+                                             style="font-family: IRANSans_Num">
+                                            <h6 style="display: inline-block">{{$item->qty}} عدد</h6>
+                                            <h6 style="display: inline-block"> | {{$item->options['color']}}
+                                                رنگ </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    <a href="{{route('login')}}"
+                       style="font-family: IRANSansWeb; font-size: 15px; border-radius: 5px; width: 380px;margin: 0px;"
+                       class="btn btn-info btn-sm waves-effect waves-light text-center" type="submit">
+                        ورود و ثبت سفارش
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- /.Navigation -->
 </div>
 @yield('intro')
@@ -341,7 +362,7 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
-    </script>a
+    </script>
     <script>
         // Material Select Initialization
         $(document).ready(function () {

@@ -6,8 +6,9 @@
 {{--@section('header')--}}
 {{--@endsection--}}
 @section('intro')
+    <div class="container-fluid" style="border-radius: 10px">
     <!--Intro-->
-    <section>
+    <section style="margin-top: 20px;">
 
         <!--Carousel Wrapper-->
         <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
@@ -19,30 +20,33 @@
             </ol>
             <!--/.Indicators-->
             <!--Slides-->
-            <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner" role="listbox" style="border-radius: 10px;margin-bottom: 20px">
                 <!--First slide-->
                 <div class="carousel-item active">
                     <div class="view h-100">
                         <img class="d-block h-100 w-lg-100"
-                             src="https://mdbootstrap.com/img/Photos/Others/ecommerce4.jpg"
-                             alt="First slide">
+                             src="https://mdbootstrap.com/img/Photos/Others/ecommerce2.jpg"
+                             alt="Second slide">
                         <div class="mask">
                             <!-- Caption -->
                             <div class="full-bg-img flex-center white-text">
                                 <ul class="animated fadeIn col-10 list-unstyled">
                                     <li>
-                                        <p class="h1 red-text mb-4 mt-5">
-                                            <strong>Sale off 30% on every saturday!</strong>
+                                        <p class="h1 dark-grey-text mb-4">
+                                            <strong>Nemo enim ipsam voluptatem quia voluptas</strong>
                                         </p>
                                     </li>
                                     <li>
-                                        <div>
-                                            <h3 class="text-muted text-right" style="margin-top: 300px"><span class="title"></span></h3>
-                                        </div>
+                                        <h5 class="h5-responsive dark-grey-text font-weight-bold mb-5">Tempora incidunt
+                                            ut
+                                            labore et dolore veritatis et quasi architecto beatae</h5>
                                     </li>
                                     <li>
-                                        <a target="_blank" href="https://mdbootstrap.com/getting-started/"
-                                           class="btn btn-danger btn-rounded" rel="nofollow">See more!</a>
+                                        <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/"
+                                           class="btn btn-primary btn-rounded" rel="nofollow">Read more</a>
+                                    </li>
+                                    <li>
+                                        <h3 class="text-muted text-right"><span class="title"></span></h3>
                                     </li>
                                 </ul>
                             </div>
@@ -83,7 +87,7 @@
                 </div>
                 <!--/Second slide-->
                 <!--Third slide-->
-                <div class="carousel-item">
+                <div class="carousel-item h-100">
                     <div class="view h-100">
                         <img class="d-block h-100 w-lg-100"
                              src="https://mdbootstrap.com/img/Photos/Others/ecommerce3.jpg"
@@ -387,19 +391,6 @@
 
                         </ul>
                         <!-- Links -->
-                        <form style="width: 800px;margin-right:20px;"
-                              class="form-inline md-form active-cyan active-cyan-2 mt-2" role="search"
-                              action="{{route('searchProduct')}}" method="post">
-                            @csrf
-                            <input class="white-text typeahead form-control form-control-sm ml-3 w-75"
-                                   style="font-family: IRANSans" name="search" type="text" placeholder="جستجو..."
-                                   aria-label="Search" autocomplete="off">
-                            <button class="btn btn-primary" style="font-family: IRANSans"><i class="fa fa-search ml-2"
-                                                                                             aria-hidden="true"></i>
-                                جستجو
-                            </button>
-
-                        </form>
                     </div>
                     <!-- Collapsible content -->
                 </div>
@@ -410,6 +401,7 @@
 
     </section>
     <!--/Intro-->
+    </div>
 @endsection
 @section('content')
     <!-- Main Container -->

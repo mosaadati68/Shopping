@@ -131,7 +131,8 @@ element.style {
     border-bottom: 0;
     border-left: .3em solid transparent
 }
-.count-cart{
+
+.count-cart {
     background-color: #fff;
     width: 25px;
     height: 25px;
@@ -146,6 +147,7 @@ element.style {
     display: block;
     margin-right: 5px;
 }
+
 .banner {
     display: block;
     min-height: 200px;
@@ -163,10 +165,11 @@ element.style {
 }
 
 /*Removes cursor that comes with typed.js*/
-.title-cursor{
+.title-cursor {
     opacity: 0;
     display: none;
 }
+
 .sub-title::after {
     content: '|';
     display: inline;
@@ -176,25 +179,46 @@ element.style {
 }
 
 /*Removes cursor that comes with typed.js*/
-.sub-title-cursor{
+.sub-title-cursor {
     opacity: 0;
     display: none;
 }
+
 /*Custom cursor animation*/
-@keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
-@-webkit-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
-@-moz-keyframes blink{
-    0% { opacity:1; }
-    50% { opacity:0; }
-    100% { opacity:1; }
+
+@-moz-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .btns {
@@ -203,11 +227,16 @@ element.style {
     margin: 0;
     padding: 30px 0 0 30px;
 }
+
 .btns a {
     display: inline-block;
     margin-left: 5px;
 }
-.btns a:first-child{margin-left:0}
+
+.btns a:first-child {
+    margin-left: 0
+}
+
 .btn {
     font-family: sans-serif;
     font-size: 14px;
@@ -215,6 +244,7 @@ element.style {
     color: #ecf0f1;
     text-decoration: none;
 }
+
 a .btn {
     cursor: pointer;
     border: 1.5px solid #ecf0f1;
@@ -228,4 +258,93 @@ a .btn {
 .btn:hover {
     background: #ecf0f1;
     color: #34495e;
+}
+
+.c-header__search {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 0;
+    padding-left: 0;
+    transition: .3s cubic-bezier(.17, .67, .49, .93);
+    -ms-flex: 0 0 calc(100% - 155px - 370px);
+    flex: 0 0 calc(100% - 155px - 370px);
+    /*max-width: calc(100% - 155px - 370px);*/
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+.c-search {
+    position: relative;
+    padding-left: 60px;
+    height: 100%;
+}
+.c-search input {
+    width: 100%;
+    border-radius: 0 7px 7px 0;
+    background-color: #eceff1;
+    border: 1px solid #d5dadd;
+    color: #474747;
+    font-weight: 300;
+    font-size: 12px;
+    font-size: .857rem;
+    line-height: 1.833;
+    padding: 5px 5px 4px;
+    z-index: 51;
+    position: relative;
+}
+.c-search__button {
+    width: 60px;
+    height: 100%;
+    background-color: #ef5661;
+    border-radius: 7px 0 0 7px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+.c-search__button:before {
+    content: "\E090";
+    font-size: 25px;
+    font-size: 1.786rem;
+    line-height: 30px;
+    height: 27px;
+    color: #fff;
+}
+.c-search__results {
+    position: absolute;
+    background: #fff;
+    left: 60px;
+    right: 0;
+    top: 100%;
+    z-index: 50;
+    border-top: 1px solid #e7e7e7;
+    overflow: hidden;
+    border-radius: 0 0 7px 7px;
+    display: none;
+    box-shadow: 0 -4px 8px 0 rgba(0,0,0,.3);
+    padding: 10px 15px;
+}
+.c-search__results-list--autosuggest {
+    background-color: #fff;
+    position: relative;
+    border-bottom: 1px solid #eceff1;
+}
+.c-search__results-list {
+    letter-spacing: -.4px;
+    font-size: 12px;
+    font-size: .857rem;
+    line-height: 1.833;
+    list-style: none;
+    display: none;
+    font-weight: 700;
 }
