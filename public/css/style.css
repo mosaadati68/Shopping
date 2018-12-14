@@ -275,11 +275,13 @@ a .btn {
     padding-right: 50px;
     padding-left: 50px;
 }
+
 .c-search {
     position: relative;
     padding-left: 60px;
     height: 100%;
 }
+
 .c-search input {
     width: 100%;
     border-radius: 0 7px 7px 0;
@@ -294,6 +296,7 @@ a .btn {
     z-index: 51;
     position: relative;
 }
+
 .c-search__button {
     width: 60px;
     height: 100%;
@@ -312,6 +315,7 @@ a .btn {
     bottom: 0;
     cursor: pointer;
 }
+
 .c-search__button:before {
     content: "\E090";
     font-size: 25px;
@@ -320,6 +324,7 @@ a .btn {
     height: 27px;
     color: #fff;
 }
+
 .c-search__results {
     position: absolute;
     background: #fff;
@@ -331,14 +336,16 @@ a .btn {
     overflow: hidden;
     border-radius: 0 0 7px 7px;
     display: none;
-    box-shadow: 0 -4px 8px 0 rgba(0,0,0,.3);
+    box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, .3);
     padding: 10px 15px;
 }
+
 .c-search__results-list--autosuggest {
     background-color: #fff;
     position: relative;
     border-bottom: 1px solid #eceff1;
 }
+
 .c-search__results-list {
     letter-spacing: -.4px;
     font-size: 12px;
@@ -347,4 +354,11 @@ a .btn {
     list-style: none;
     display: none;
     font-weight: 700;
+}
+
+c-link-dashed {
+    font-size: 15px;
+    display: unset;
+    color: #157ca1 !important;
+    border-bottom: 1px dashed #008ec9;
 }
