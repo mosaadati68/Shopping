@@ -55,6 +55,11 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function sellers()
+    {
+        return $this->belongsToMany(Seller::class,'product_seller');
+    }
+
     public function getCategoryIdAttribute($value)
     {
         return Category::where('id', $value)->first()->name;

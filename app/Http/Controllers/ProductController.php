@@ -94,7 +94,6 @@ class ProductController extends Controller
      */
     public function show($slug)
     {
-//        Session::flush();
         $product = Product::findBySlug($slug);
         if (Session::exists('interestedProduct')) {
             $getSessionProduct = Session::get('interestedProduct');

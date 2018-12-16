@@ -1255,7 +1255,7 @@
                         @foreach ($products->chunk(4) as $chunk)
                             @foreach ($chunk as $product)
                                 <!-- Grid column -->
-                                    <div class="col-lg-3 col-md-6 mb-lg-0 mb-5 mt-5">
+                                    <div class="col-lg-3 col-md-6 mb-lg-0 mb-5 mt-5 ">
                                         <!-- Card -->
                                         <div class="card card-cascade narrower card-ecommerce">
                                             <!-- Card image -->

@@ -295,8 +295,12 @@
                                     <p class="text-muted mt-3 mb-1" style="display: inline-block">فروشنده: </p>
                                     <a class="waves-effect waves-light text-muted"
                                        style="font-size: 10px; display: unset; color: #008ec9 !important; border-bottom: 1px dashed #008ec9;"
-                                       href="http://localhost:8000/register"><p style="display: inline-block">حافظه
-                                            طلائی تهران</p>
+                                       href="http://localhost:8000/register"><p
+                                                style="display: inline-block">
+                                            @foreach($product->sellers as $seller)
+                                                {{$seller->name}}
+                                            @endforeach
+                                        </p>
                                     </a>
                                     <p class="text-muted mb-1 mr-5">رضایت خرید: 99% </p>
                                 </div>
@@ -368,7 +372,7 @@
                                 <a class="waves-effect waves-light text-muted"
                                    style="font-size: 10px;color: #008ec9 !important;"
                                    href="http://localhost:8000/register"><p class="mt-3" style="display: inline-block">
-                                        12 فروشنده / گارانتی این کالا </p>
+                                        {{$product->sellers->count()}} فروشنده / گارانتی این کالا </p>
                                 </a>
                             </div>
                         </div>
