@@ -231,16 +231,17 @@
                                     <p class="text-muted" style="display: inline-block">برند: </p>
                                     <a class="waves-effect waves-light text-muted"
                                        style="font-size: 10px; display: unset; color: #008ec9 !important; border-bottom: 1px dashed #008ec9;"
-                                       href="http://localhost:8000/register"><p style="display: inline-block">سلیکون
-                                            پاور</p>
+                                       href="http://localhost:8000/register"><p
+                                                style="display: inline-block">{{$product->brand->name}}</p>
                                     </a>
                                 </div>
                                 <div class="col-6">
                                     <p class="text-muted " style="display: inline-block">دسته بندی: </p>
                                     <a class="waves-effect waves-light text-muted"
                                        style="font-size: 10px; display: unset; color: #008ec9 !important; border-bottom: 1px dashed #008ec9;"
-                                       href="http://localhost:8000/register"><p style="display: inline-block">هارد دیسک
-                                            اکسترنال</p></a>
+                                       href="http://localhost:8000/register"><p
+                                                style="display: inline-block"> {{$product->category_id}} </p>
+                                    </a>
                                 </div>
                             </div>
                             <div class="row">
@@ -248,34 +249,18 @@
                                     <section class="color mt-2">
                                         <p class="grey-text text-right">انتخاب رنگ :</p>
                                         <div class="row text-right text-md-right mr-3">
-                                            <div class="col-md-4">
-                                                <!--Radio group-->
-                                                <div class="form-group">
-                                                    <input class="form-check-input" name="group100" type="radio"
-                                                           id="radio100"
-                                                           checked="checked">
-                                                    <label for="radio100"
-                                                           class="form-check-label text-muted">سفید</label>
+                                            @foreach($product->colors as $color)
+                                                <div class="col-md-4">
+                                                    <!--Radio group-->
+                                                    <div class="form-group">
+                                                        <input class="form-check-input" name="group100" type="radio"
+                                                               id="radio100"
+                                                               checked="checked">
+                                                        <label for="radio100"
+                                                               class="form-check-label text-muted">{{$color->name}}</label>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <!--Radio group-->
-                                                <div class="form-group">
-                                                    <input class="form-check-input" name="group100" type="radio"
-                                                           id="radio101">
-                                                    <label for="radio101"
-                                                           class="form-check-label text-muted">نقره ای</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <!--Radio group-->
-                                                <div class="form-group">
-                                                    <input class="form-check-input" name="group100" type="radio"
-                                                           id="radio102">
-                                                    <label for="radio102"
-                                                           class="form-check-label text-muted">طلائی</label>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </section>
                                 </div>
@@ -412,7 +397,7 @@
 
         <h6 class="text-muted mt-4 text-right mr-4">محصولات مرتبط</h6>
         <hr width="120" class="red lighten-2 float-right mr-3 mt-0">
-        <div class="row mb-3 mt-4 float-right">
+        <div class="row mb-3 mt-4" style="display: initial;">
         @foreach($interested->chunk(3) as $chunk)
             <!--Grid column-->
                 @foreach ($chunk as $product)
@@ -463,14 +448,14 @@
                                 <!--Card footer-->
                                 <div class="card-footer pb-0">
                                     <div class="row mb-0">
-                    <span class="float-left">
-                      <strong>1439$</strong>
-                    </span>
+        <span class="float-left">
+        <strong>1439$</strong>
+        </span>
                                         <span class="float-right">
-                      <a class="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Cart">
-                        <i class="fa fa-shopping-cart ml-3"></i>
-                      </a>
-                    </span>
+        <a class="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Cart">
+        <i class="fa fa-shopping-cart ml-3"></i>
+        </a>
+        </span>
                                     </div>
                                 </div>
 
@@ -487,35 +472,87 @@
             @endforeach
         </div>
 
-        <div class="classic-tabs">
-            <ul class="nav tabs-grey tabs-light" id="detailsProduct" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link waves-light active show" id="tab-profile" data-toggle="tab" href="#profile"
-                       role="tab"
-                       aria-controls="profile" aria-selected="true">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-light active show" id="tab-details" data-toggle="tab" href="#details"
-                       role="tab"
-                       aria-controls="profile" aria-selected="true">Details</a>
-                </li>
-            </ul>
-            <div class="tab-content border-right border-bottom border-left rounded-bottom" id="TabContent">
-                <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="tab-profile">
-                    <p>sdfdf</p>
-                </div>
-                <div class="tab-pane fade active show" id="details" role="tabpanel" aria-labelledby="tab-details">
-                    <p>sdfdf</p>
-                </div>
-            </div>
-        </div>
+        <div class="row mb-3 mt-4">
+            <!-- Classic tabs -->
+            <div class="classic-tabs mx-2">
 
+                <ul class="nav tabs-light" id="myClassicTabShadow" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link waves-light text-muted" id="awesome-tab-classic-shadow" data-toggle="tab"
+                           href="#awesome-classic-shadow" role="tab" aria-controls="awesome-classic-shadow"
+                           aria-selected="true">نقد و بررسی</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-light text-muted" id="awesome-tab-classic-shadow" data-toggle="tab"
+                           href="#awesome-classic-shadow" role="tab" aria-controls="awesome-classic-shadow"
+                           aria-selected="false">مشخصات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-light text-muted" id="awesome-tab-classic-shadow" data-toggle="tab"
+                           href="#awesome-classic-shadow" role="tab" aria-controls="awesome-classic-shadow"
+                           aria-selected="false">نظرات کاربران</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-light text-muted" id="awesome-tab-classic-shadow" data-toggle="tab"
+                           href="#awesome-classic-shadow" role="tab" aria-controls="awesome-classic-shadow"
+                           aria-selected="false">پرسش و پاسخ</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content card" id="myClassicTabContentShadow">
+                    <div class="tab-pane fade active show" id="profile-classic-shadow" role="tabpanel"
+                         aria-labelledby="profile-tab-classic-shadow">
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                            laudantium,
+                            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae
+                            vitae
+                            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+                            fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+                            porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
+                            quia
+                            non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
+                            voluptatem.</p>
+                    </div>
+                    <div class="tab-pane fade" id="follow-classic-shadow" role="tabpanel"
+                         aria-labelledby="follow-tab-classic-shadow">
+                        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
+                            nisi ut
+                            aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate
+                            velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
+                            nulla
+                            pariatur?</p>
+                    </div>
+                    <div class="tab-pane fade" id="contact-classic-shadow" role="tabpanel"
+                         aria-labelledby="contact-tab-classic-shadow">
+                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                            voluptatum
+                            deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate
+                            non
+                            provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et
+                            dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore,
+                            cum
+                            soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere
+                            possimus, omnis voluptas assumenda est, omnis dolor repellendus. </p>
+                    </div>
+                    <div class="tab-pane fade" id="awesome-classic-shadow" role="tabpanel"
+                         aria-labelledby="awesome-tab-classic-shadow">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat
+                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Classic tabs -->
+        </div>
         <h6 class="text-muted mt-3 text-right mr-3">خریداران این محصول, محصولات زیر را نیز خریداری نموده اند</h6>
         <hr width="400" class="red lighten-2 float-right mr-3 mt-0">
-    </section>
-    <section>
+
         <!-- Grid row -->
-        <div class="row mb-3">
+        <div class="row mb-3" style="display: initial;">
         @foreach($interested->chunk(3) as $chunk)
             <!--Grid column-->
                 @foreach ($chunk as $product)
@@ -566,14 +603,14 @@
                                 <!--Card footer-->
                                 <div class="card-footer pb-0">
                                     <div class="row mb-0">
-                    <span class="float-left">
-                      <strong>1439$</strong>
-                    </span>
+    <span class="float-left">
+    <strong>1439$</strong>
+    </span>
                                         <span class="float-right">
-                      <a class="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Cart">
-                        <i class="fa fa-shopping-cart ml-3"></i>
-                      </a>
-                    </span>
+    <a class="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Cart">
+    <i class="fa fa-shopping-cart ml-3"></i>
+    </a>
+    </span>
                                     </div>
                                 </div>
 
@@ -653,15 +690,15 @@
                                 <!--Card footer-->
                                 <div class="card-footer pb-0">
                                     <div class="row mb-0">
-                        <span class="float-left">
-                          <strong>1439$</strong>
-                        </span>
+    <span class="float-left">
+    <strong>1439$</strong>
+    </span>
                                         <span class="float-right">
-                          <a class="" data-toggle="tooltip" data-placement="top" title=""
-                             data-original-title="Add to Cart">
-                            <i class="fa fa-shopping-cart ml-3"></i>
-                          </a>
-                        </span>
+    <a class="" data-toggle="tooltip" data-placement="top" title=""
+       data-original-title="Add to Cart">
+    <i class="fa fa-shopping-cart ml-3"></i>
+    </a>
+    </span>
                                     </div>
                                 </div>
 
@@ -722,15 +759,15 @@
                                 <!--Card footer-->
                                 <div class="card-footer pb-0">
                                     <div class="row mb-0">
-                        <span class="float-left">
-                          <strong>1439$</strong>
-                        </span>
+    <span class="float-left">
+    <strong>1439$</strong>
+    </span>
                                         <span class="float-right">
-                          <a class="" data-toggle="tooltip" data-placement="top" title=""
-                             data-original-title="Add to Cart">
-                            <i class="fa fa-shopping-cart ml-3"></i>
-                          </a>
-                        </span>
+    <a class="" data-toggle="tooltip" data-placement="top" title=""
+       data-original-title="Add to Cart">
+    <i class="fa fa-shopping-cart ml-3"></i>
+    </a>
+    </span>
                                     </div>
                                 </div>
 
@@ -792,23 +829,23 @@
                                 <div class="card-footer pb-0">
                                     <div class="row mb-0">
                                         <h5 class="mb-0 pb-0 mt-1 font-weight-bold">
-                          <span class="red-text">
-                            <strong>$699</strong>
-                          </span>
+    <span class="red-text">
+    <strong>$699</strong>
+    </span>
                                             <span class="grey-text">
-                            <small>
-                              <s>$920</s>
-                            </small>
-                          </span>
+    <small>
+    <s>$920</s>
+    </small>
+    </span>
                                         </h5>
 
                                         <span class="float-right">
 
-                          <a class="" data-toggle="tooltip" data-placement="top" title=""
-                             data-original-title="Add to Cart">
-                            <i class="fa fa-shopping-cart ml-3"></i>
-                          </a>
-                        </span>
+    <a class="" data-toggle="tooltip" data-placement="top" title=""
+       data-original-title="Add to Cart">
+    <i class="fa fa-shopping-cart ml-3"></i>
+    </a>
+    </span>
                                     </div>
                                 </div>
 
@@ -869,16 +906,16 @@
                                 <!--Card footer-->
                                 <div class="card-footer pb-0">
                                     <div class="row mb-0">
-                        <span class="float-left">
-                          <strong>1439$</strong>
-                        </span>
+    <span class="float-left">
+    <strong>1439$</strong>
+    </span>
                                         <span class="float-right">
 
-                          <a class="" data-toggle="tooltip" data-placement="top" title=""
-                             data-original-title="Add to Cart">
-                            <i class="fa fa-shopping-cart ml-3"></i>
-                          </a>
-                        </span>
+    <a class="" data-toggle="tooltip" data-placement="top" title=""
+       data-original-title="Add to Cart">
+    <i class="fa fa-shopping-cart ml-3"></i>
+    </a>
+    </span>
                                     </div>
                                 </div>
 
@@ -898,6 +935,9 @@
 
         </div>
         <!--Grid row-->
+    </section>
+    <section>
+
 
     </section>
 

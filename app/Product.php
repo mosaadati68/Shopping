@@ -60,6 +60,16 @@ class Product extends Model
         return $this->belongsToMany(Seller::class,'product_seller');
     }
 
+    public function colors()
+    {
+        return $this->hasMany(Color::class);
+    }
+
+    public function brand()
+    {
+        return $this->hasOne(Brand::class);
+    }
+
     public function getCategoryIdAttribute($value)
     {
         return Category::where('id', $value)->first()->name;

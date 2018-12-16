@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Product;
 use App\Rate;
 use function Couchbase\defaultDecoder;
@@ -97,7 +98,7 @@ class ProductController extends Controller
         $product = Product::findBySlug($slug);
         if (Session::exists('interestedProduct')) {
             $getSessionProduct = Session::get('interestedProduct');
-            if (!$getSessionProduct->contains($product)) {
+            if ($getSessionProduct->contains($product)) {
                 $getSessionProduct->push($product);
             }
         } else {
