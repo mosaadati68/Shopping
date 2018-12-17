@@ -232,7 +232,7 @@
                                     <a class="waves-effect waves-light text-muted"
                                        style="font-size: 10px; display: unset; color: #008ec9 !important; border-bottom: 1px dashed #008ec9;"
                                        href="http://localhost:8000/register"><p
-                                                style="display: inline-block">{{$product->brand->name}}</p>
+                                                style="display: inline-block">{{$product->brand->name ? $product->brand->name : ""}}</p>
                                     </a>
                                 </div>
                                 <div class="col-6">
@@ -240,7 +240,7 @@
                                     <a class="waves-effect waves-light text-muted"
                                        style="font-size: 10px; display: unset; color: #008ec9 !important; border-bottom: 1px dashed #008ec9;"
                                        href="http://localhost:8000/register"><p
-                                                style="display: inline-block"> {{$product->category_id}} </p>
+                                                style="display: inline-block"> {{$product->category_id ? $product->category_id : ""}} </p>
                                     </a>
                                 </div>
                             </div>

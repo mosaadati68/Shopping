@@ -406,9 +406,9 @@
 @section('content')
     {{ Breadcrumbs::render('cart', 'سبد خرید') }}
     <div class="row" id="cart_content">
-        <div class="col-8">
+        <div class="col-sm-12 col-md-8">
             <!-- Section cart -->
-            <section class="section pb-5">
+            <section class="section pb-3">
 
                 <div class="card card-ecommerce">
                     <div class="card-body">
@@ -449,14 +449,14 @@
 
                                         <tr>
                                             <th scope="row" class="justify-content-right">
-                                                <img width="200" height="200" style="border-radius: 10px"
+                                                <img width="100" height="100" style="border-radius: 10px"
                                                      src="{{$item->options->image}}"
                                                      alt="" class="img-fluid z-depth-0">
                                             </th>
                                             <td>
-                                                <h5 class="mt-3 text-right">
+                                                <h6 class="mt-3 text-right">
                                                     <strong>{{ $item->name }}</strong>
-                                                </h5>
+                                                </h6>
                                             </td>
                                             <td></td>
                                             <td>{{ $item->price }} تومان</td>
@@ -505,12 +505,10 @@
             </section>
             <!-- /Section cart -->
         </div>
-        <div class="col-4">
-            <div class="col">
-                <div class="row">
-                    <section class="mx-4 mb-6 pb-3">
-
-                        <div class="card" style="width: 35rem;">
+        <div class="col-sm-12 col-md-4">
+            <div class="row">
+                    <section class="mb-6 pb-3 ml-2">
+                        <div class="card">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-6">
@@ -538,7 +536,7 @@
                                             تومان </h5>
                                     </div>
                                     <div class="row-6">
-                                        <h6 class="text-muted text-center pr-1 mt-3"><a href="{{route('checkout')}}"
+                                        <h6 class="text-muted text-center pr-1 mt-3"><a href="{{route('shipping.order')}}"
                                                                                         type="button"
                                                                                         class="btn btn-primary btn-rounded waves-effect waves-light font-weight-bold"
                                                                                         style="font-family: IRANSansWeb">ادامه
@@ -555,27 +553,26 @@
 
                             </div>
                         </div>
-
                     </section>
-                </div>
-                <div class="row">
-                    <section class="mx-4 mb-6 pb-3">
-
-                        <div class="card" style="width: 35rem;">
+                    <section class="mb-6 pb-3 ml-2"  style="width: 100%">
+                        <div class="card">
                             <div class="card-body">
                                 <div class="col text-center">
                                     <div class="row-6 mt-4">
                                         <h5 class="text-muted text-right"><img width="25" height="25" class="ml-2"
-                                                                               src="/img/svg/a8d65c7a.svg">هفت روز ضمانت تعویض
+                                                                               src="/img/svg/a8d65c7a.svg">هفت روز
+                                            ضمانت تعویض
                                         </h5>
                                     </div>
                                     <div class="row-12">
                                         <h5 class="text-muted text-right"><img width="25" height="25" class="ml-2"
-                                                                               src="/img/svg/3e2ec4e5.svg">پرداخت در محل با کارت
+                                                                               src="/img/svg/3e2ec4e5.svg">پرداخت در
+                                            محل با کارت
                                             بانکی</h5>
                                     </div>
                                     <div class="row-6">
-                                        <h6 class="text-muted text-right pr-1 mt-3"><img width="25" height="25" class="ml-2"
+                                        <h6 class="text-muted text-right pr-1 mt-3"><img width="25" height="25"
+                                                                                         class="ml-2"
                                                                                          src="/img/svg/0e30c4eb.svg">تحویل
                                             اکسپرس</h6>
                                     </div>
@@ -583,9 +580,7 @@
 
                             </div>
                         </div>
-
                     </section>
-                </div>
             </div>
         </div>
     </div>

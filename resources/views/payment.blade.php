@@ -424,120 +424,121 @@
             </ul>
         </div>
     </div>
-    <form action="{{route('checkout.order')}}" method="POST">
-        @csrf
-        <div class="row" id="cart_content">
-            <div class="col-8">
-                <!-- Section cart -->
-                <section class="section pb-5">
-                    <h4 class="text-muted text-right mt-4 pr-4"> صدور فاکتور </h4>
-                    <div class="card card-ecommerce mt-4">
-                        <div class="card-body">
-                            <div class="form-check text-right mr-5 ">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input form-group" name="print-invoice"
-                                           id="print-invoice"
-                                           width="30">
-                                    <label class="custom-control-label" for="print-invoice"><h5
-                                                class="text-muted">درخواست ارسال فاکتور</h5></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    {{--<form action="{{route('checkout.order')}}" method="POST">--}}
+        {{--@csrf--}}
+        {{--<div class="row" id="cart_content">--}}
+            {{--<div class="col-8">--}}
+                {{--<!-- Section cart -->--}}
+                {{--<section class="section pb-5">--}}
+                    {{--<h4 class="text-muted text-right mt-4 pr-4"> صدور فاکتور </h4>--}}
+                    {{--<div class="card card-ecommerce mt-4">--}}
+                        {{--<div class="card-body">--}}
+                            {{--<div class="form-check text-right mr-5 ">--}}
+                                {{--<div class="custom-control custom-checkbox">--}}
+                                    {{--<input type="checkbox" class="custom-control-input form-group" name="print-invoice"--}}
+                                           {{--id="print-invoice"--}}
+                                           {{--width="30">--}}
+                                    {{--<label class="custom-control-label" for="print-invoice"><h5--}}
+                                                {{--class="text-muted">درخواست ارسال فاکتور</h5></label>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
-                </section>
-                <!-- /Section cart -->
-            </div>
-            <div class="col-4">
-                <div class="col">
-                    <div class="row">
-                        <section class="mx-4 mb-6 pb-3">
+                {{--</section>--}}
+                {{--<!-- /Section cart -->--}}
+            {{--</div>--}}
+            {{--<div class="col-4">--}}
+                {{--<div class="col">--}}
+                    {{--<div class="row">--}}
+                        {{--<section class="mx-4 mb-6 pb-3">--}}
 
-                            <div class="card" style="width: 35rem;">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <h5 class="text-right">مبلغ کل ({{Cart::count()}})</h5>
-                                        </div>
-                                        <div class="col-6">
-                                            <h5 class=" text-muted float-left">{{Cart::total()}} تومان </h5>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <h5 class="text-right">هزینه ارسال : </h5>
-                                        </div>
-                                        <div class="col-6">
-                                            <h5 class=" text-muted float-left">وابسته به آدرس</h5>
-                                        </div>
-                                    </div>
-                                    <div style="width: 100%; border: 1px solid #e6e6e6; height: 4px; border-right: none; border-left: none;margin-top: 10px"></div>
-                                    <div class="col text-center">
-                                        <div class="row-6 mt-4">
-                                            <h5 class="text-center">مبلغ قابل پرداخت : </h5>
-                                        </div>
-                                        <div class="row-12">
-                                            <h5 class="text-muted text-center red-text lighten-2">{{Cart::total()}}
-                                                تومان </h5>
-                                        </div>
-                                        <div class="row-6">
-                                            <h6 class="text-muted text-center pr-1 mt-3">
-                                                <button type="submit"
-                                                        class="btn btn-primary btn-rounded waves-effect waves-light font-weight-bold"
-                                                        style="font-family: IRANSansWeb">تایید
-                                                    و ثبت سفارش
-                                                    <i class="fa fa-angle-left left"></i>
-                                                </button>
-                                            </h6>
-                                        </div>
-                                        <div class="row-6">
-                                            <h6 class="text-muted text-right pr-1 mt-3">کالاهای موجود در سبد شما ثبت و
-                                                رزرو نشده‌اند، برای ثبت سفارش مراحل بعدی را تکمیل کنید. </h6>
-                                        </div>
-                                    </div>
+                            {{--<div class="card" style="width: 35rem;">--}}
+                                {{--<div class="card-body">--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-6">--}}
+                                            {{--<h5 class="text-right">مبلغ کل ({{Cart::count()}})</h5>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-6">--}}
+                                            {{--<h5 class=" text-muted float-left">{{Cart::total()}} تومان </h5>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-6">--}}
+                                            {{--<h5 class="text-right">هزینه ارسال : </h5>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-6">--}}
+                                            {{--<h5 class=" text-muted float-left">وابسته به آدرس</h5>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div style="width: 100%; border: 1px solid #e6e6e6; height: 4px; border-right: none; border-left: none;margin-top: 10px"></div>--}}
+                                    {{--<div class="col text-center">--}}
+                                        {{--<div class="row-6 mt-4">--}}
+                                            {{--<h5 class="text-center">مبلغ قابل پرداخت : </h5>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="row-12">--}}
+                                            {{--<h5 class="text-muted text-center red-text lighten-2">{{Cart::total()}}--}}
+                                                {{--تومان </h5>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="row-6">--}}
+                                            {{--<h6 class="text-muted text-center pr-1 mt-3">--}}
+                                                {{--<button type="submit"--}}
+                                                        {{--class="btn btn-primary btn-rounded waves-effect waves-light font-weight-bold"--}}
+                                                        {{--style="font-family: IRANSansWeb">تایید--}}
+                                                    {{--و ثبت سفارش--}}
+                                                    {{--<i class="fa fa-angle-left left"></i>--}}
+                                                {{--</button>--}}
+                                            {{--</h6>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="row-6">--}}
+                                            {{--<h6 class="text-muted text-right pr-1 mt-3">کالاهای موجود در سبد شما ثبت و--}}
+                                                {{--رزرو نشده‌اند، برای ثبت سفارش مراحل بعدی را تکمیل کنید. </h6>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
 
-                                </div>
-                            </div>
+                                {{--</div>--}}
+                            {{--</div>--}}
 
-                        </section>
-                    </div>
-                    <div class="row">
-                        <section class="mx-4 mb-6 pb-3">
+                        {{--</section>--}}
+                    {{--</div>--}}
+                    {{--<div class="row">--}}
+                        {{--<section class="mx-4 mb-6 pb-3">--}}
 
-                            <div class="card" style="width: 35rem;">
-                                <div class="card-body">
-                                    <div class="col text-center">
-                                        <div class="row-6 mt-4">
-                                            <h5 class="text-muted text-right"><img width="25" height="25" class="ml-2"
-                                                                                   src="/img/svg/a8d65c7a.svg">هفت روز
-                                                ضمانت
-                                                تعویض </h5>
-                                        </div>
-                                        <div class="row-12">
-                                            <h5 class="text-muted text-right"><img width="25" height="25" class="ml-2"
-                                                                                   src="/img/svg/3e2ec4e5.svg">پرداخت در
-                                                محل
-                                                با کارت بانکی</h5>
-                                        </div>
-                                        <div class="row-6">
-                                            <h6 class="text-muted text-right pr-1 mt-3"><img width="25" height="25"
-                                                                                             class="ml-2"
-                                                                                             src="/img/svg/0e30c4eb.svg">تحویل
-                                                اکسپرس</h6>
-                                        </div>
-                                    </div>
+                            {{--<div class="card" style="width: 35rem;">--}}
+                                {{--<div class="card-body">--}}
+                                    {{--<div class="col text-center">--}}
+                                        {{--<div class="row-6 mt-4">--}}
+                                            {{--<h5 class="text-muted text-right"><img width="25" height="25" class="ml-2"--}}
+                                                                                   {{--src="/img/svg/a8d65c7a.svg">هفت روز--}}
+                                                {{--ضمانت--}}
+                                                {{--تعویض </h5>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="row-12">--}}
+                                            {{--<h5 class="text-muted text-right"><img width="25" height="25" class="ml-2"--}}
+                                                                                   {{--src="/img/svg/3e2ec4e5.svg">پرداخت در--}}
+                                                {{--محل--}}
+                                                {{--با کارت بانکی</h5>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="row-6">--}}
+                                            {{--<h6 class="text-muted text-right pr-1 mt-3"><img width="25" height="25"--}}
+                                                                                             {{--class="ml-2"--}}
+                                                                                             {{--src="/img/svg/0e30c4eb.svg">تحویل--}}
+                                                {{--اکسپرس</h6>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
 
-                                </div>
-                            </div>
+                                {{--</div>--}}
+                            {{--</div>--}}
 
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
+                        {{--</section>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</form>--}}
 
     <!-- Section products -->
+    <a href="{{route('payment.order',['order_id' => 5])}}">zdcd</a>
     <section class="mt-5">
         <h4 class="font-weight-bold mt-4 title-1 text-right">
             <strong>محصولات مرتبط</strong>

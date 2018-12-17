@@ -30,9 +30,9 @@ Route::post('/address', 'Panel\DashboardController@saveAddress')->name('save.add
 
 Route::group(['middleware' => 'auth:web'], function () {
     $this->get('/shipping', 'Order\OrderController@shipping')->name('shipping.order');
+    $this->get('/payment', 'Order\OrderController@show_payment')->name('payment.show');
     $this->post('/checkout', 'Order\OrderController@checkout')->name('checkout.order');
-    $this->get('/payment', 'Order\OrderController@show_payment')->name('payment');
-
+    $this->get('/payment/order/{order_number}', 'Order\OrderController@payment')->name('payment.order');
 });
 
 Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

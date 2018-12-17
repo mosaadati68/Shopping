@@ -430,45 +430,45 @@
             <div class="col-8">
                 <!-- Section cart -->
                 <section class="section pb-5">
-                    <h3 class="text-muted text-right mb-3 pr-4">انتخاب آدرس تحویل سفارش</h3>
+                    <h4 class="text-muted text-right mb-3 pr-4">انتخاب آدرس تحویل سفارش</h4>
                     <div class="card card-ecommerce">
                         <div class="card-body">
                             @foreach($addresses as $address)
                                 <div class="pr-4"
                                      style="border-right-width: 7px;border-right-color: rgb(141, 212, 220);border-right-style: solid;">
                                     <div class="row">
-                                        <div class="col-4">
-                                            <h4 class="text-muted text-right mb-4">
-                                                گیرنده: {{$address->full_name_transferee}} </h4>
+                                        <div class="col-5">
+                                            <h5 class="text-muted text-right mb-4">
+                                                گیرنده: {{$address->full_name_transferee}} </h5>
                                         </div>
-                                        <div class="col-8">
+                                        <div class="col-7">
                                             <a class="text-right float-right" href="#"
                                                style="border-bottom: dashed;border-bottom-width: 2px;color: #00bfd6">اطلاح
                                                 این آدرس </a>
-                                            <button href="http://localhost:8000/panel/checkout" type="button"
-                                               class="float-left btn waves-effect waves-light font-weight-bold checkout-btn">
+                                            <button href="http://localhost:8000/panel/checkout" type="button" style="font-family: IRANSansWeb"
+                                               class="float-left btn waves-effect waves-light font-weight-bold checkout-btn text-muted">
                                                 تغییر آدرس ارسال
                                                 <i class="fa fa-angle-left left"></i>
                                             </button>
                                         </div>
                                     </div>
 
-                                    <h5 class="text-muted text-right mb-4">شماره تماس: {{$address->contact_no}} | کد
-                                        پستی: {{$address->zip_code}}</h5>
-                                    <h5 class="text-muted text-right mb-4">
+                                    <h6 class="text-muted text-right mb-4">شماره تماس: {{$address->contact_no}} | کد
+                                        پستی: {{$address->zip_code}}</h6>
+                                    <h6 class="text-muted text-right mb-4">
                                         @php
                                             echo ' آدرس : استان' . ' ' . $address->state_province . ' , ' . 'شهر ' . $address->city . ' , ' . $address->address
                                         @endphp
-                                    </h5>
-                                    <h4 class="text-muted text-right mb-4">آدرس الکترونیکی
-                                        : {{Auth::user()->email}}</h4>
+                                    </h6>
+                                    <h6 class="text-muted text-right mb-4">آدرس الکترونیکی
+                                        : {{Auth::user()->email}}</h6>
                                 </div>
                             @endforeach
                         </div>
                         <div class="c-checkout-contact__badge"></div>
                     </div>
 
-                    <h3 class="text-muted text-right mb-3 mt-4 pr-4">انتخاب نحوه ارسال</h3>
+                    <h4 class="text-muted text-right mb-3 mt-4 pr-4">انتخاب نحوه ارسال</h4>
                     <div class="card card-ecommerce text-right">
                         <div class="card-body">
                             <div class="custom-control custom-checkbox form-group mr-5  mb-3">
@@ -476,23 +476,23 @@
                                        class="custom-control-input"
                                        value="1" name="transmission-type"
                                        id="transmission-type-1"
-                                       width="30">
-                                <label class="custom-control-label" for="transmission-type-1"><h5
+                                       width="20">
+                                <label class="custom-control-label" for="transmission-type-1"><h6
                                             class="text-muted">سریع‌ (مرسوله‌ها در سریع‌ترین زمان ممکن ارسال
-                                        می‌شوند)</h5></label>
+                                        می‌شوند)</h6></label>
                             </div>
                             <div class="custom-control custom-checkbox form-group mr-5">
                                 <input type="checkbox" name="transmission-type"
                                        value="0" class="custom-control-input"
                                        id="transmission-type-0"
-                                       width="30" checked>
-                                <label class="custom-control-label" for="transmission-type-0"><h5
-                                            class="text-muted">عادی</h5></label>
+                                       width="20" checked>
+                                <label class="custom-control-label" for="transmission-type-0"><h6
+                                            class="text-muted">عادی</h6></label>
                             </div>
                         </div>
                     </div>
 
-                    <h3 class="text-muted text-right mt-4 pr-4"> مرسوله {{Cart::count()}}</h3>
+                    <h4 class="text-muted text-right mt-4 pr-4"> مرسوله {{ Cart::count() }} عدد</h4>
                     <div class="card card-ecommerce mt-4">
                         <div class="card-body">
                             @foreach(Cart::content() as $cart)
@@ -500,11 +500,11 @@
                                      style="border-right-width: 7px;border-right-color: rgb(141, 212, 220);border-right-style: solid;">
                                     <div class="col">
                                         <div class="row">
-                                            <img class="float-right mb-4" width="150" height="150"
+                                            <img class="float-right mb-4" width="120" height="120"
                                                  src="{{$cart->options->image}}" style="border-radius: 5px">
                                         </div>
                                         <div class="row">
-                                            <h5 class="text-muted text-right mb-4"> {{$cart->name}} </h5>
+                                            <h6 class="text-muted text-right mb-4"> {{$cart->name}} </h6>
                                         </div>
                                     </div>
                                 </div>
@@ -636,9 +636,9 @@
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input form-group" name="print-invoice"
                                            id="print-invoice"
-                                           width="30">
-                                    <label class="custom-control-label" for="print-invoice"><h5
-                                                class="text-muted">درخواست ارسال فاکتور</h5></label>
+                                           width="20">
+                                    <label class="custom-control-label" for="print-invoice"><h6
+                                                class="text-muted">درخواست ارسال فاکتور</h6></label>
                                 </div>
                             </div>
                         </div>
@@ -652,7 +652,7 @@
                     <div class="row">
                         <section class="mx-4 mb-6 pb-3">
 
-                            <div class="card" style="width: 35rem;">
+                            <div class="card">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-6">
@@ -701,22 +701,22 @@
                         </section>
                     </div>
                     <div class="row">
-                        <section class="mx-4 mb-6 pb-3">
+                        <section class="mx-4 mb-6 pb-3" style="width: 100%">
 
-                            <div class="card" style="width: 35rem;">
+                            <div class="card">
                                 <div class="card-body">
                                     <div class="col text-center">
                                         <div class="row-6 mt-4">
-                                            <h5 class="text-muted text-right"><img width="25" height="25" class="ml-2"
+                                            <h6 class="text-muted text-right"><img width="25" height="25" class="ml-2"
                                                                                    src="/img/svg/a8d65c7a.svg">هفت روز
                                                 ضمانت
-                                                تعویض </h5>
+                                                تعویض </h6>
                                         </div>
                                         <div class="row-12">
-                                            <h5 class="text-muted text-right"><img width="25" height="25" class="ml-2"
+                                            <h6 class="text-muted text-right"><img width="25" height="25" class="ml-2"
                                                                                    src="/img/svg/3e2ec4e5.svg">پرداخت در
                                                 محل
-                                                با کارت بانکی</h5>
+                                                با کارت بانکی</h6>
                                         </div>
                                         <div class="row-6">
                                             <h6 class="text-muted text-right pr-1 mt-3"><img width="25" height="25"

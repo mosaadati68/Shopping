@@ -30,15 +30,15 @@ class OrderController extends Controller
         $print_invoice = $request->get("print-invoice");
         $transmission_type = $request->get("transmission-type");
         $shipping_time = $request->get("shipping-time");
-        $order = $this->addOrder($print_invoice,$transmission_type,$shipping_time);
+        $order = $this->addOrder($print_invoice, $transmission_type, $shipping_time);
         $payment = $this->newPayment($order->id);
         Cart::destroy();
 //        \Mail::to($request->user())
 //            ->queue(new OrderPlaced($order));
-        return redirect()->route('payment');
+        return redirect()->route('payment.order', ['order_id' => $order->order_number]);
     }
 
-    private function addOrder($print_invoice,$transmission_type,$shipping_time)
+    private function addOrder($print_invoice, $transmission_type, $shipping_time)
     {
         $cartItem = [];
         $order = new Order();
@@ -63,7 +63,6 @@ class OrderController extends Controller
     {
         $user = Auth::user();
         $addresses = $user->addresses()->get();
-//        dd($carts);
         return view('shipping', compact('addresses'));
     }
 
@@ -101,11 +100,11 @@ class OrderController extends Controller
         return view('payment');
     }
 
-    public function payment($order_id)
+    public function payment($order_number)
     {
         $zarinpal = new Zarinpal($this->MerchantID);
 
-        $order = Order::where('id', $order_id)->first();
+        $order = Order::where('order_number', $order_number)->first();
         $payment = Payment::where('id', $order->payment_id)->first();
         $amount = $payment->amount;
         $description = 'توضیحات تراکنش تستی'; // Required
