@@ -127,7 +127,7 @@
         </div>
         <!--/.Carousel Wrapper-->
 
-        <div class="container-fluid mx-0 px-0">
+        <div class="container-fluid mx-0 px-0 text-muted">
 
             <!--Navbar-->
             <nav class="navbar navbar-expand-lg navbar-dark primary-color mb-5">

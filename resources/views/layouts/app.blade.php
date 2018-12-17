@@ -352,7 +352,7 @@
     <script type="text/javascript" src="/js/wow.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/plugin/axios/axios.min.js"></script>
     <script src="/js/app.js"></script>
 
     <script type="text/javascript">
