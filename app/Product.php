@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
     use Sluggable;
+    use Searchable;
 
     protected $fillable = [
         'name', 'slug', 'category_id', 'sku', 'excerpt',
@@ -19,6 +21,16 @@ class Product extends Model
         'options' => 'array',
         'photos' => 'array'
     ];
+
+    /**
+     * Get the index name for the model.
+     *
+     * @return string
+     */
+    public function searchableAs()
+    {
+        return 'products_index';
+    }
 
     public function sluggable()
     {

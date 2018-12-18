@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth:web'], function () {
 
 Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 //Route::get('search', 'SearchController@index')->name('search');
-Route::post('search', 'SearchController@search')->name('searchProduct');
+Route::get('search', 'SearchController@search')->name('searchProduct');
 Route::get('autocomplete', 'SearchController@autocomplete')->name('autocomplete');
 
 Route::group(['prefix' => 'panel','middleware' => 'auth:web'], function () {

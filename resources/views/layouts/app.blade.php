@@ -116,10 +116,12 @@
             <div class="c-header__search mr-5">
                 <div class="c-search js-search is-active" data-event="using_search_box"
                      data-event-category="header_section">
-                    <input type="text" name="q" height="15" style="font-family: IRANSansWeb"
-                           placeholder="نام کالا، برند و یا دسته مورد نظر خود را جستجو کنید…"
-                           class="js-search-input" autocomplete="off">
-                    <button class="c-search__button js-header-search-button"></button>
+                    <form method="GET" action="{{ route('searchProduct') }}">
+                        <input type="text" name="q" height="15" style="font-family: IRANSansWeb"
+                               placeholder="نام کالا، برند و یا دسته مورد نظر خود را جستجو کنید…"
+                               class="auto_search js-search-input" autocomplete="off">
+                        <button class="c-search__button js-header-search-button"></button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -389,8 +391,9 @@
         $(".button-collapse").sideNav();
     </script>
     <script type="text/javascript">
+
         var path = "{{ route('autocomplete') }}";
-        $('input.typeahead').typeahead({
+        $('input.auto_search').typeahead({
             source: function (query, process) {
                 return $.get(path, {query: query}, function (data) {
                     return process(data);
