@@ -3,7 +3,7 @@
 @foreach ($products->chunk(4) as $chunk)
     @foreach ($chunk as $product)
         <!-- Grid column -->
-            <div class="col-lg-3 col-md-6 mb-lg-0 mb-5 mt-5">
+            <div class="col-lg-3 col-md-6 mb-lg-0 mb-5 mt-5 ">
                 <!-- Card -->
                 <div class="card card-cascade narrower card-ecommerce">
                     <!-- Card image -->
@@ -26,63 +26,73 @@
                                 <a href="{{ route('product.show',['slug'=>$product->slug]) }}">{{ $product->name }}</a>
                             </strong>
                         </h4>
-                        <!--Rating-->
-                        <ul class="rating">
-                            @for ($i = 0; $i < $product->rate ; $i++)
-                                <li>
-                                    <a onclick='ratingProduct( {{ $i }},{{ $product->id }} )'><i
-                                                class="fa fa-star"></i></a>
-                                </li>
-                            @endfor
-                            @for ($i = 0; $i < 5 - $product->rate ; $i++)
-                                <li>
-                                    <a onclick='ratingProduct( {{ $i + $product->rate }},{{ $product->id }} )'><i
-                                                class="fa fa-star-o"></i></a>
-                                </li>
-                            @endfor
-                        </ul>
+                        <div class="row">
+                            <div class="col-6">
+                                <!--Rating-->
+                                <ul class="rating">
+                                    @for ($i = 0; $i < $product->rate ; $i++)
+                                        <li>
+                                            <a onclick='ratingProduct( {{ $i }},{{ $product->id }} )'><i
+                                                        class="fa fa-star"></i></a>
+                                        </li>
+                                    @endfor
+                                    @for ($i = 0; $i < 5 - $product->rate ; $i++)
+                                        <li>
+                                            <a onclick='ratingProduct( {{ $i + $product->rate }},{{ $product->id }} )'><i
+                                                        class="fa fa-star-o"></i></a>
+                                        </li>
+                                    @endfor
+                                </ul>
+                                @php
+                                    $rateCount = \App\Rate::where('product_id',$product->id)->get();
+                                @endphp
+                            </div>
+                            <div class="col-6">
+                                <p class="text-muted" style="display: inline-block">{{ $rateCount->count() ? ' از ' . $rateCount->count() . ' امتیاز ' : '' }}</p>
+                            </div>
+                        </div>
+
                         <!-- Description -->
-                        <p class="card-text text-right">
+                        <p class="card-text text-right" >
                             {{ str_limit($product->description , 100 , '...')}}
                         </p>
                         <!-- Card footer -->
                         <div class="card-footer px-1">
-                  <span class="float-left font-weight-bold">
-                    <strong>{{ $product->price }} تومان </strong>
-                  </span>
+                      <span class="float-left font-weight-bold">
+                        <strong>{{ $product->price }} تومان </strong>
+                      </span>
                             <span class="float-right">
-                    <a data-toggle="tooltip" data-placement="top" title="" data-original-title="افزودن به سبد خرید"
-                       onclick="addCart({{ $product->id }})">
-                      <i class="fa fa-shopping-cart grey-text ml-3"></i>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Share">
-                      <i class="fa fa-share-alt grey-text ml-3"></i>
-                    </a>
+                        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="افزودن به سبد خرید"
+                           onclick="addToCart({{ $product->id }})">
+                          <i class="fa fa-shopping-cart grey-text ml-3"></i>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Share">
+                          <i class="fa fa-share-alt grey-text ml-3"></i>
+                        </a>
                                 @if($wishlist ==null)
-                                    <a onclick="addWishlist({{ $product->id }})" class="active"
+                                    <a onclick="addWishlist({{ $product->id }})"
                                        data-toggle="tooltip"
                                        data-placement="top" title=""
                                        data-original-title="افزودن به علاقه مندی ها">
-                          <i class="fa fa-heart-o ml-3"></i>
+                              <i class="fa fa-heart-o ml-3"></i>
                                         @else
                                             @if(!in_array($product->id,$wishlist))
                                                 <a onclick="addWishlist({{ $product->id }})"
-                                                   class="active"
                                                    data-toggle="tooltip"
                                                    data-placement="top" title=""
                                                    data-original-title="افزودن به علاقه مندی ها">
-                          <i class="fa fa-heart-o ml-3"></i>
-                        </a>
+                              <i class="fa fa-heart-o ml-3"></i>
+                            </a>
                                             @else
                                                 <a onclick="addWishlist({{ $product->id }})"
                                                    class="active"
                                                    data-toggle="tooltip"
                                                    data-placement="top" title=""
                                                    data-original-title="افزودن به علاقه مندی ها">
-                          <i class="fa fa-heart ml-3"></i>
-                        </a>
+                              <i class="fa fa-heart ml-3"></i>
+                            </a>
                                 @endif
-                  </span>
+                      </span>
                             @endif
 
                         </div>

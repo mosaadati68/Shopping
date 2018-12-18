@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+
 class HomeController extends Controller
 {
     /**
@@ -33,8 +34,13 @@ class HomeController extends Controller
         } else {
             $wishlist = Collection::make();
         }
-        $products = Product::paginate(12);
-        return view('home', ['products' => $products, 'wishlist' => $wishlist ? $wishlist->toArray() : $wishlist]);
+        $products = Product::Paginate(4);
+        $lastProducts = Product::orderBy('created_at', 'DESC')->limit(4)->get();
+        return view('home', [
+            'products' => $products,
+            'wishlist' => $wishlist ? $wishlist->toArray() : $wishlist,
+            'lastProducts' => $lastProducts
+        ]);
     }
 
     public function contact()

@@ -17,7 +17,8 @@
               integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
               crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap-notifications.min.css') }}">
 
         <!-- Bootstrap core CSS -->
@@ -30,6 +31,19 @@
         <link href="{{ asset('/css/animate.min.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     @show
+    <!BEGIN RAYCHAT CODE-->
+    <script type="text/javascript">!function () {
+            function t() {
+                var t = document.createElement("script");
+                t.type = "text/javascript", t.async = !0, localStorage.getItem("rayToken") ? t.src = "https://app.raychat.io/scripts/js/" + o + "?rid=" + localStorage.getItem("rayToken") + "&href=" + window.location.href : t.src = "https://app.raychat.io/scripts/js/" + o;
+                var e = document.getElementsByTagName("script")[0];
+                e.parentNode.insertBefore(t, e)
+            }
+
+            var e = document, a = window, o = "88723055-8676-4482-9fec-e8395444d57d";
+            "complete" == e.readyState ? t() : a.attachEvent ? a.attachEvent("onload", t) : a.addEventListener("load", t, !1)
+        }();</script>
+    <!END RAYCHAT CODE-->
 </head>
 
 <body class="homepage-v1 hidden-sn white-skin animated">
@@ -411,46 +425,45 @@
         }
     </script>
     <script>
-        $(function () {
-            $(".title").typed({
-                strings: ["شما می توانید با خرید از سایت ما "],
-                // Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
-                stringsElement: null,
-                // typing speed
-                typeSpeed: 30,
-                // time before typing starts
-                startDelay: 1200,
-                // backspacing speed
-                backSpeed: 20,
-                // time before backspacing
-                backDelay: 500,
-                // loop
-                loop: true,
-                // false = infinite
-                loopCount: 5,
-                // show cursor
-                showCursor: false,
-                // character for cursor
-                cursorChar: "|",
-                // attribute to type (null == text)
-                attr: null,
-                // either html or text
-                contentType: 'html',
-                // call when done callback function
-                callback: function () {
-                },
-                // starting callback function before each string
-                preStringTyped: function () {
-                },
-                //callback for every typed string
-                onStringTyped: function () {
-                },
-                // callback for reset
-                resetCallback: function () {
-                }
-            });
-        });
-
+        // $(function () {
+        //     $(".title").typed({
+        //         strings: ["شما می توانید با خرید از سایت ما "],
+        //         // Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
+        //         stringsElement: null,
+        //         // typing speed
+        //         typeSpeed: 30,
+        //         // time before typing starts
+        //         startDelay: 1200,
+        //         // backspacing speed
+        //         backSpeed: 20,
+        //         // time before backspacing
+        //         backDelay: 500,
+        //         // loop
+        //         loop: true,
+        //         // false = infinite
+        //         loopCount: 5,
+        //         // show cursor
+        //         showCursor: false,
+        //         // character for cursor
+        //         cursorChar: "|",
+        //         // attribute to type (null == text)
+        //         attr: null,
+        //         // either html or text
+        //         contentType: 'html',
+        //         // call when done callback function
+        //         callback: function () {
+        //         },
+        //         // starting callback function before each string
+        //         preStringTyped: function () {
+        //         },
+        //         //callback for every typed string
+        //         onStringTyped: function () {
+        //         },
+        //         // callback for reset
+        //         resetCallback: function () {
+        //         }
+        //     });
+        // });
     </script>
 @show
 </body>
