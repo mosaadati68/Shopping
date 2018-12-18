@@ -50,6 +50,7 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:web'], function () {
     $this::post('/profile/save', 'ProfileController@saveProfile')->name('save.profile');
     $this::post('/uploadAvatar', 'ProfileController@uploadAvatar')->name('uploadAvatar');
 
+    $this::get('/', 'Panel\DashboardController@index')->name('dashboard');
     $this::get('/profile', 'Panel\DashboardController@profile')->name('profile');
     $this::get('/addresses', 'Panel\DashboardController@addresses')->name('addresses');
     $this::get('/comments', 'Panel\DashboardController@comments')->name('comments');

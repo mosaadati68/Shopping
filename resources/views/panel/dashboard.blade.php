@@ -511,7 +511,7 @@
 @endsection
 @section('footer')
     <footer class="footer">
-        © 2018 Material Pro Admin by wrappixel.com
+        © 1397 فروشگاه اینترنتی همه چی کالا
     </footer>
 @endsection
 @section('Scripts')

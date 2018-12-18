@@ -518,16 +518,16 @@
                             <ul class="nav md-tabs nav-justified grey lighten-3 mx-0" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active dark-grey-text font-weight-bold" data-toggle="tab"
-                                       href="#panel5" role="tab"> Bestsellers</a>
+                                       href="#panel5" role="tab"> فروشندگان برتر </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link dark-grey-text font-weight-bold" data-toggle="tab" href="#panel6"
-                                       role="tab">Top offers</a>
+                                       role="tab">بهترین پیشنهاد ها</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link dark-grey-text font-weight-bold" data-toggle="tab" href="#panel7"
                                        role="tab">
-                                        </i>Best rated</a>
+                                        </i>بیشترین امتیاز</a>
                                 </li>
                             </ul>
                             <!-- Tab panels -->
@@ -1322,39 +1322,40 @@
                       <span class="float-left font-weight-bold">
                         <strong>{{ $product->price }} تومان </strong>
                       </span>
-                                                    <span class="float-right">
+                      <span class="float-right">
                         <a data-toggle="tooltip" data-placement="top" title="" data-original-title="افزودن به سبد خرید"
                            onclick="addToCart({{ $product->id }})">
                           <i class="fa fa-shopping-cart grey-text ml-3"></i>
                         </a>
-                        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Share">
+                        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="اشتراک گذاری">
                           <i class="fa fa-share-alt grey-text ml-3"></i>
                         </a>
-                                                        @if($wishlist ==null)
-                                                            <a onclick="addWishlist({{ $product->id }})"
-                                                               data-toggle="tooltip"
-                                                               data-placement="top" title=""
-                                                               data-original-title="افزودن به علاقه مندی ها">
-                              <i class="fa fa-heart-o ml-3"></i>
-                                                                @else
-                                                                    @if(!in_array($product->id,$wishlist))
-                                                                        <a onclick="addWishlist({{ $product->id }})"
-                                                                           data-toggle="tooltip"
-                                                                           data-placement="top" title=""
-                                                                           data-original-title="افزودن به علاقه مندی ها">
-                              <i class="fa fa-heart-o ml-3"></i>
+                        @if($wishlist == null)
+                            <a onclick="addWishlist({{ $product->id }})"
+                                data-toggle="tooltip"
+                                data-placement="top" title=""
+                                data-original-title="افزودن به علاقه مندی ها" style="display: inline-block">
+                                <i class="fa fa-heart-o ml-3"></i>
                             </a>
-                                                                    @else
-                                                                        <a onclick="addWishlist({{ $product->id }})"
-                                                                           class="active"
-                                                                           data-toggle="tooltip"
-                                                                           data-placement="top" title=""
-                                                                           data-original-title="افزودن به علاقه مندی ها">
-                              <i class="fa fa-heart ml-3"></i>
-                            </a>
-                                                        @endif
+                        @else
+                            @if(!in_array($product->id,$wishlist))
+                                <a onclick="addWishlist({{ $product->id }})"
+                                    data-toggle="tooltip"
+                                    data-placement="top" title=""
+                                    data-original-title="افزودن به علاقه مندی ها">
+                                    <i class="fa fa-heart-o ml-3"></i>
+                                 </a>
+                            @else
+                                <a onclick="addWishlist({{ $product->id }})"
+                                    data-toggle="tooltip"
+                                    data-placement="top" title=""
+                                    data-original-title="افزودن به علاقه مندی ها">
+                                    <i class="fa fa-heart ml-3"></i>
+                                </a>
+                            @endif
+                        @endif
+
                       </span>
-                                                    @endif
 
                                                 </div>
                                             </div>
