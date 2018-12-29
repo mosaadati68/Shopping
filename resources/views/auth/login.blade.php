@@ -62,16 +62,16 @@
 
                             <!-- Social login -->
                             <p>یا ثبت نام از طریق:</p>
-                            <a type="button" class="btn-floating btn-fb btn-sm waves-effect waves-light">
+                            <a type="button" href="{{ url('/auth/facebook') }}" class="btn-floating btn-fb btn-sm waves-effect waves-light">
                                 <i class="fa fa-facebook"></i>
                             </a>
-                            <a type="button" class="btn-floating btn-tw btn-sm waves-effect waves-light">
+                            <a type="button" href="{{ url('/auth/twitter') }}" class="btn-floating btn-tw btn-sm waves-effect waves-light">
                                 <i class="fa fa-twitter"></i>
                             </a>
-                            <a type="button" class="btn-floating btn-li btn-sm waves-effect waves-light">
+                            <a type="button" href="{{ url('/auth/linkedin') }}" class="btn-floating btn-li btn-sm waves-effect waves-light">
                                 <i class="fa fa-linkedin"></i>
                             </a>
-                            <a type="button" class="btn-floating btn-git btn-sm waves-effect waves-light">
+                            <a type="button" href="{{ url('/auth/github') }}" class="btn-floating btn-git btn-sm waves-effect waves-light">
                                 <i class="fa fa-github"></i>
                             </a>
                         </form>

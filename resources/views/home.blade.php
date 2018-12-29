@@ -46,7 +46,7 @@
                         @foreach($carts as $item)
                             <div class="row mb-2 mt-3 mr-3">
                                 <div class="col-2">
-                                    <img width="70" height="70" src="{{$item->options['image']}}"
+                                    <img width="70" height="70" src="{{asset($item->options['image'])}}"
                                          style="border-radius: 5px;display: inline-block">
                                 </div>
                                 <div class="col-10">

@@ -28,6 +28,10 @@ Route::post('/cart/destroy', 'CartController@destroy')->name('cart.destroy');
 Route::get('/getCity/{province_id}', 'Panel\DashboardController@getCity')->name('getCity');
 Route::post('/address', 'Panel\DashboardController@saveAddress')->name('save.address');
 
+//Socialite Provider Login/Register
+Route::get('auth/{provider}', 'Auth\SocialiteController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\SocialiteController@handleProviderCallback');
+
 Route::group(['middleware' => 'auth:web'], function () {
     $this->get('/shipping', 'Order\OrderController@shipping')->name('shipping.order');
     $this->get('/payment', 'Order\OrderController@show_payment')->name('payment.show');

@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>@yield('title', 'صفحه اصلی') | فروشگاه اینترینتی شیک پوشان </title>
+    <title>@yield('title', 'صفحه اصلی') | فروشگاه اینترینتی همه چی کالا </title>
 
 @section('Styles')
     <!-- Font Awesome -->
@@ -17,7 +15,8 @@
               integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
               crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap-notifications.min.css') }}">
 
         <!-- Bootstrap core CSS -->
@@ -57,26 +56,36 @@
                         <a class="nav-link dropdown-toggle waves-effect waves-light text-muted font-weight-bold"
                            id="navbarDropdownMenuLink-4" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
+                            @php
+                                use Illuminate\Support\Facades\Auth;
+                            @endphp
+                            @if(Auth::check())
+                                <i class="fa fa-user blue-text"></i> {{ Auth::user()->name }} </a>
+                        @else
                             <i class="fa fa-user blue-text"></i> ورود / عضویت </a>
+                        @endif
                         <div class="dropdown-menu dropdown-menu-right" style="width: 250px"
                              aria-labelledby="navbarDropdownMenuLink-4">
                             <div class="text-center mb-4 mt-4">
-                                <a style="font-family: IRANSansWeb; font-size: 15px; border-radius: 5px"
-                                   href="{{route('login')}}"
-                                   class="btn btn-info btn-sm waves-effect waves-light text-center font-weight-bold"
-                                   type="submit">
-                                    ورود به همه
-                                    چی کالا
-                                </a>
+                                @if(!Auth::check())
+                                    <a style="font-family: IRANSansWeb; font-size: 15px; border-radius: 5px"
+                                       href="{{route('login')}}"
+                                       class="btn btn-info btn-sm waves-effect waves-light text-center font-weight-bold"
+                                       type="submit">
+                                        ورود به همه
+                                        چی کالا
+                                    </a>
                             </div>
                             <div class="text-center">
-                                <p class="text-right text-muted mr-2 d-inline-block ml-2" style="font-size: 15px">کاربر
+                                <p class="text-right text-muted mr-2 d-inline-block ml-2" style="font-size: 15px">
+                                    کاربر
                                     جدید هستید؟ </p>
                                 <a class="waves-effect waves-light text-muted"
                                    style="font-size: 15px; display:unset;color: #157ca1 !important; border-bottom: 1px dashed #008ec9;"
                                    href="{{route('register')}}">ثبت‌نام</a>
                             </div>
                             <hr class="text-muted" style="height: 2px;">
+                            @endif
                             <div class="row">
                                 <div class="col-6 text-center">
                                     <a class="waves-effect waves-light text-muted text-right" style="font-size: 15px"
@@ -263,25 +272,25 @@
 @section('footerScripts')
 
     <!-- JQuery -->
-    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap3-typeahead.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap3-typeahead.min.js') }}"></script>
     {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>--}}
 
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="/js/popper.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/toastr.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/toastr.min.js') }}"></script>
 
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="/js/mdb.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}') }}"></script>
 
-    <script type="text/javascript" src="/js/wow.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/wow.min.js') }}"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
-    <script src="/js/plugin/axios/axios.min.js"></script>
-    <script src="/js/app.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/axios.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 
     <script type="text/javascript">
         /* WOW.js init */
@@ -292,13 +301,13 @@
             $('[data-toggle="tooltip"]').tooltip()
         })
     </script>
-    <script>
+    <script type="text/javascript">
         // Material Select Initialization
         $(document).ready(function () {
             $('.mdb-select').material_select();
         });
     </script>
-    <script>
+    <script type="text/javascript">
         // SideNav Initialization
         $(".button-collapse").sideNav();
     </script>
@@ -339,7 +348,7 @@
                 });
         }
     </script>
-    <script>
+    <script type="text/javascript">
         $(function () {
             $(".title").typed({
                 strings: ["شما می توانید با خرید از سایت ما "],
