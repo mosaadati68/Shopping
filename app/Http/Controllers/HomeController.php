@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateProfile;
 use App\Product;
 use App\Seller;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
