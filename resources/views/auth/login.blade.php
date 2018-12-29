@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
-            <div class="col-md-8  mt-5">
+            <div class="col-md-6  mt-5">
                 <div class="card">
                     <div class="card-header info-color white-text text-center py-4">{{ __('ورود به سیستم') }}</div>
                     <div class="card-body">
@@ -36,7 +36,7 @@
                                                           </div>
 
                             <div class="form-group row">
-                                <div class="col-md-4 offset-md-4">
+                                <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember"
                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -48,7 +48,7 @@
                             </div>
                             <button type="submit"
                                     class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
-                                    style="font-family: IRANSans">
+                                    style="font-family: IRANSansWeb">
                                 {{ __('ورود') }}
                             </button>
 
@@ -57,7 +57,7 @@
                             </a>
 
                             <p class="mt-4">کاربر جدید هستید؟
-                                <a href="{{route('register')}}"> ثبت‌نام در دیجی‌کالا</a>
+                                <a href="{{route('register')}}"> ثبت‌نام در همه چی کالا</a>
                             </p>
 
                             <!-- Social login -->

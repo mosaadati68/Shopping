@@ -40,14 +40,16 @@ Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 Route::post('search', 'SearchController@search')->name('searchProduct');
 Route::get('autocomplete', 'SearchController@autocomplete')->name('autocomplete');
 
-Route::group(['prefix' => 'panel', 'middleware' => ['auth:web','admin']], function () {
+Route::group(['prefix' => 'panel','middleware' => 'auth:web'], function () {
     $this->post('/checkout', 'Order\OrderController@checkout')->name('checkout');
+//    $this->get('/payment/order/{order_id}', 'Order\OrderController@payment')->name('payment.order');
     $this->get('/payment/checker', 'Order\OrderController@checker')->name('checker');
+
     $this->get('/orders/delete', 'Order\OrderController@delete')->name('delete.order');
     $this::get('/profile/edit', 'ProfileController@editProfile')->name('edit.profile');
     $this::post('/profile/save', 'ProfileController@saveProfile')->name('save.profile');
     $this::post('/uploadAvatar', 'ProfileController@uploadAvatar')->name('uploadAvatar');
-    $this::get('/', 'Panel\DashboardController@index')->name('dashboard');
+
     $this::get('/profile', 'Panel\DashboardController@profile')->name('profile');
     $this::get('/addresses', 'Panel\DashboardController@addresses')->name('addresses');
     $this::get('/comments', 'Panel\DashboardController@comments')->name('comments');

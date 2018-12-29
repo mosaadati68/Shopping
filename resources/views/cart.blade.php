@@ -125,7 +125,7 @@
         <div class="container-fluid mx-0 px-0">
 
             <!--Navbar-->
-            <nav class="navbar navbar-expand-lg navbar-dark primary-color mb-5 navbar-radios">
+            <nav class="navbar navbar-expand-lg navbar-dark primary-color mb-5">
                 <div class="container-fluid">
 
                     <!-- Collapse button -->

@@ -31,10 +31,11 @@ class ProductController extends Controller
         if (Auth::check()) {
             $UserProduct = Rate::where('product_id', $request->productId)
                 ->where('user_id', Auth::user()->id)->exists();
-            $product = Product::find($request->productId);
             if ($UserProduct) {
+                $product = Product::find($request->productId);
                 $rateing = Rate::where('product_id', $request->productId)
                     ->where('user_id', Auth::user()->id)->first();
+                $rateing = Rate::find($rateing->id);
                 $rateing->rate = $request->rate + 1;
                 $rateing->save();
                 $avg = Rate::where('product_id', $request->productId)->pluck('rate')->avg();
@@ -46,8 +47,6 @@ class ProductController extends Controller
                 $rate->product_id = $request->productId;
                 $rate->user_id = Auth::user()->id;
                 $rate->save();
-                $product->rate = $request->rate + 1;
-                $product->save();
             }
             $products = Product::paginate(12);
             $wishlist = Auth::user()->wishlist()->pluck('product_id');

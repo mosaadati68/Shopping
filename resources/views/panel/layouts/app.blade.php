@@ -54,17 +54,17 @@
                     <b>
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        {{--<img src="/img/logo.png" alt="homepage" class="dark-logo"/>--}}
+                        <img src="/img/panel/logo-icon.png" alt="homepage" class="dark-logo"/>
                         <!-- Light Logo icon -->
-                        <img src="/img/logo.png" alt="homepage" width="150" height="40" class="light-logo"/>
+                        <img src="/img/panel/logo-light-icon.png" alt="homepage" class="light-logo"/>
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span>
                          <!-- dark Logo text -->
-                        {{--</img src="/img/panel/logo-text.png" alt="homepage" class="dark-logo" />--}}
+                        </img/panel/img src="/img/panel/logo-text.png" alt="homepage" class="dark-logo" />
                         <!-- Light Logo text -->
-                         {{--<img src="/img/panel/logo-light-text.png" class="light-logo" alt="homepage"/></span> </a>--}}
+                         <img src="/img/panel/logo-light-text.png" class="light-logo" alt="homepage"/></span> </a>
             </div>
             <!-- ============================================================== -->
             <!-- End Logo -->
@@ -87,7 +87,7 @@
                         <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i
                                     class="ti-search"></i></a>
                         <form class="app-search">
-                            <input type="text" class="form-control" placeholder="جستجو..."> <a class="srh-btn"><i
+                            <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i
                                         class="ti-close"></i></a></form>
                     </li>
                     <!-- ============================================================== -->
@@ -455,10 +455,12 @@
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
                                     class="flag-icon flag-icon-us"></i></a>
-                        <div class="dropdown-menu dropdown-menu-right scale-up">
-                            <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-ar ml-2"></i>فارسی</a>
-                            <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-us ml-2" style="border-radius: 3px"></i>انگلیسی</a>
-                        </div>
+                        <div class="dropdown-menu dropdown-menu-right scale-up"><a class="dropdown-item" href="#"><i
+                                        class="flag-icon flag-icon-in"></i> India</a> <a class="dropdown-item" href="#"><i
+                                        class="flag-icon flag-icon-fr"></i> French</a> <a class="dropdown-item"
+                                                                                          href="#"><i
+                                        class="flag-icon flag-icon-cn"></i> China</a> <a class="dropdown-item" href="#"><i
+                                        class="flag-icon flag-icon-de"></i> Dutch</a></div>
                     </li>
                 </ul>
             </div>
@@ -559,7 +561,7 @@
         <div class="container-fluid">
             @yield('content')
         </div>
-        {{--@yield('footer')--}}
+        @yield('footer')
     </div>
 </div>
 @section('Scripts')

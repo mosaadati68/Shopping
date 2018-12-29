@@ -68,9 +68,14 @@
                 <small class="text-muted p-t-30 db">کد ملی</small>
                 <h6>{{isset($profile->national_code) ? $profile->national_code : ""}}</h6>
                 <small class="text-muted p-t-30 db">دریافت خبرنامه</small>
-                <h6>{{isset($profile->newsletters) ? $profile->newsletters ? "بله" : "خیر" : "خیر"}}</h6>
+                <h6>{{isset($profile->newsletters) ? $profile->newsletters ? "بله" : "خیر" : ""}}</h6>
                 <small class="text-muted p-t-30 db">شماره کارت</small>
-                <h6 class="p-b-30">{{isset($profile->card_number) ? $profile->card_number : ""}}</h6>
+                <h6 class="p-b-30">{{isset($profile->card_number) ?
+                substr($profile->card_number,12,4).' - '.
+                substr($profile->card_number,8,4).' - '.
+                substr($profile->card_number,4,4).' - '.
+                substr($profile->card_number,0,4)
+                : ""}}</h6>
 
                 <div class="map-box">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508"
@@ -446,7 +451,7 @@
         const $button = document.getElementById('submit-files')
         $(document).ready(function () {
             const dropzoneFileUpload = new Dropzone('#dropzoneFileUpload', {
-                url: "/panel/uploadAvatar",
+                url: "/uploadAvatar",
                 paramName: "file",
                 autoProcessQueue: false,
                 maxFilesize: 2,

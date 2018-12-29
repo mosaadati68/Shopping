@@ -155,78 +155,78 @@ element.style {
     position: relative;
 }
 
-/*!*Add custom cursor so it auto inherits font styles*!*/
-/*.title::after {*/
-    /*content: '|';*/
-    /*display: inline;*/
-    /*-webkit-animation: blink 0.7s infinite;*/
-    /*-moz-animation: blink 0.7s infinite;*/
-    /*animation: blink 0.7s infinite;*/
-/*}*/
+/*Add custom cursor so it auto inherits font styles*/
+.title::after {
+    content: '|';
+    display: inline;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
 
 /*Removes cursor that comes with typed.js*/
-/*.title-cursor {*/
-    /*opacity: 0;*/
-    /*display: none;*/
-/*}*/
+.title-cursor {
+    opacity: 0;
+    display: none;
+}
 
-/*.sub-title::after {*/
-    /*content: '|';*/
-    /*display: inline;*/
-    /*-webkit-animation: blink 0.7s infinite;*/
-    /*-moz-animation: blink 0.7s infinite;*/
-    /*animation: blink 0.7s infinite;*/
-/*}*/
+.sub-title::after {
+    content: '|';
+    display: inline;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
 
-/*!*Removes cursor that comes with typed.js*!*/
-/*.sub-title-cursor {*/
-    /*opacity: 0;*/
-    /*display: none;*/
-/*}*/
+/*Removes cursor that comes with typed.js*/
+.sub-title-cursor {
+    opacity: 0;
+    display: none;
+}
 
-/*!*Custom cursor animation*!*/
-/*@keyframes blink {*/
-    /*0% {*/
-        /*opacity: 1;*/
-    /*}*/
-    /*50% {*/
-        /*opacity: 0;*/
-    /*}*/
-    /*100% {*/
-        /*opacity: 1;*/
-    /*}*/
-/*}*/
+/*Custom cursor animation*/
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
-/*@-webkit-keyframes blink {*/
-    /*0% {*/
-        /*opacity: 1;*/
-    /*}*/
-    /*50% {*/
-        /*opacity: 0;*/
-    /*}*/
-    /*100% {*/
-        /*opacity: 1;*/
-    /*}*/
-/*}*/
+@-webkit-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
-/*@-moz-keyframes blink {*/
-    /*0% {*/
-        /*opacity: 1;*/
-    /*}*/
-    /*50% {*/
-        /*opacity: 0;*/
-    /*}*/
-    /*100% {*/
-        /*opacity: 1;*/
-    /*}*/
-/*}*/
+@-moz-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
-/*.btns {*/
-    /*display: block;*/
-    /*width: 400px;*/
-    /*margin: 0;*/
-    /*padding: 30px 0 0 30px;*/
-/*}*/
+.btns {
+    display: block;
+    width: 400px;
+    margin: 0;
+    padding: 30px 0 0 30px;
+}
 
 .btns a {
     display: inline-block;
@@ -361,7 +361,4 @@ c-link-dashed {
     display: unset;
     color: #157ca1 !important;
     border-bottom: 1px dashed #008ec9;
-}
-.navbar-radios{
-    border-radius: 10px;
 }

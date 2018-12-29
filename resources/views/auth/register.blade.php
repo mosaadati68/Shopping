@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row justify-content-center mt-5 mb-5">
-        <div class="col-md-6 mt-5">
+        <div class="col-md-4 mt-5">
             <div class="card">
                 <h5 class="card-header info-color white-text text-center py-4">
                     <strong>{{ __('ثبت نام در سایت') }}</strong>
@@ -55,7 +55,7 @@
                         </div>
                         <button type="submit"
                                 class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
-                                style="font-family: IRANSans">
+                                style="font-family: IRANSansWeb">
                             {{ __('ثبت نام') }}
                         </button>
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateProfile;
 use App\Product;
 use App\Seller;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
@@ -10,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-
 class HomeController extends Controller
 {
     /**
@@ -35,13 +33,8 @@ class HomeController extends Controller
         } else {
             $wishlist = Collection::make();
         }
-        $products = Product::Paginate(4);
-        $lastProducts = Product::orderBy('created_at', 'DESC')->limit(4)->get();
-        return view('home', [
-            'products' => $products,
-            'wishlist' => $wishlist ? $wishlist->toArray() : $wishlist,
-            'lastProducts' => $lastProducts
-        ]);
+        $products = Product::paginate(12);
+        return view('home', ['products' => $products, 'wishlist' => $wishlist ? $wishlist->toArray() : $wishlist]);
     }
 
     public function contact()
